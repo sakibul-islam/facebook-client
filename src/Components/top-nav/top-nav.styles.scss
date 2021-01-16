@@ -1,0 +1,81 @@
+@mixin v-center {
+  display: flex;
+  align-items: center;
+}
+
+.top-nav {
+  height: 60px;
+  width: 100%;
+  @include v-center();
+  background-color: white;
+
+  .left {
+    @include v-center();
+    width: 20%;
+
+    .logo {
+      margin: 0 10px;
+    }
+
+    .search {
+      position: relative;
+      @include v-center();
+
+      .icon {
+        position: absolute;
+        left: 10px;
+        fill: gray;
+      }
+      input {
+        padding-left: 30px;
+      }
+      @media (max-width: 1000px) {
+        input {
+          width: 40px;
+        }
+        .icon {
+          left: 15px;
+        }
+      }
+    }
+  }
+
+  .middle {
+    @include v-center();
+    justify-content: space-between;
+    width: 50%;
+    margin-left: 100px;
+
+    .hover-button {
+      width: 20%;
+
+      .tooltip {
+        top: 130%;
+      }
+    }
+  }
+
+  .right {
+    @include v-center();
+    justify-content: flex-end;
+    width: 30%;
+    margin-right: 20px;
+    
+    .icon-container {
+      margin: 0 5px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 20px;
+      cursor: pointer;
+      background-color: #d2d2d2;
+      
+      .tooltip {
+        top: 130%;
+      }
+
+      &:hover {
+      background-color: #b8b8b8;
+      }
+    }
+  }
+}

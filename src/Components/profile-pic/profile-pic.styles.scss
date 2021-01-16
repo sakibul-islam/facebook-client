@@ -1,0 +1,13 @@
+.pp-container {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #d2d2d2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+  }
+}

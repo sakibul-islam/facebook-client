@@ -4,6 +4,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   background-color: rgb(6, 77, 6);
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 }

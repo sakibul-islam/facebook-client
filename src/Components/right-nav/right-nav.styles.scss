@@ -6,4 +6,8 @@
   justify-content: center;
 
   background-color: rgb(64, 83, 11);
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 }

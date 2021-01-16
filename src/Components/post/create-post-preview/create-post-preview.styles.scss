@@ -6,8 +6,16 @@
     .header {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #D2D2D2;
 
-      
+      .pp-container {
+        margin: 0 10px;
+      }
+      input {
+        display: inline-flex;
+      }
     }
   }
 }

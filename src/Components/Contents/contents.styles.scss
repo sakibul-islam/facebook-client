@@ -4,5 +4,14 @@
   padding: 30px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: #F0F2F5;
+
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+
+  .create-post {
+    width: 500px;
+  }
 }

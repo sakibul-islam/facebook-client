@@ -19,3 +19,12 @@
 .contents {
   width: 50%;
 }
+
+@media (max-width: 800px) {
+  .left-nav, .right-nav {
+    display: none;
+  }
+  .contents {
+    width: 100%;
+  }
+}

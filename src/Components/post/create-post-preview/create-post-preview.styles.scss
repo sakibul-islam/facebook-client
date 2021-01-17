@@ -1,20 +1,48 @@
+@mixin v-center {
+  display: flex;
+  align-items: center;
+}
 .create-post {
 
   .card {
     padding: 10px;
 
     .header {
-      display: flex;
-      align-items: center;
+      @include v-center();
       justify-content: space-between;
+      flex-shrink: 0;
       padding-bottom: 10px;
       border-bottom: 1px solid #D2D2D2;
 
-      .pp-container {
-        margin: 0 10px;
+      .profile-pic {
+        margin-left: 10px;
+        flex-shrink: 0;
       }
-      input {
-        display: inline-flex;
+      .hover-button {
+        width: 100%;
+        height: 40px;
+        margin-left: 10px;
+        border-radius: 20px;
+        background-color: #f0f2f5;
+        padding: 0 10px;
+        @include v-center();
+        justify-content: flex-start;
+
+        &:hover {
+          background-color: #d2d2d2;
+        }
+      }
+    }
+
+    .media {
+      @include v-center();
+      justify-content: space-between;
+      padding-top: 10px;
+      
+      .hover-button {
+        flex: auto;
+        height: 40px;
+        @include v-center();
       }
     }
   }

@@ -1,0 +1,23 @@
+.home {
+  display: flex;
+  height: calc(100vh - 60px);
+
+  .left-nav, .right-nav {
+    width: 25%;
+  }
+  .contents {
+    width: 50%;
+  }
+
+  @media (max-width: 800px) {
+  .left-nav, .right-nav {
+    display: none;
+  }
+  .contents {
+    width: 100%;
+  }
+}
+}
+
+
+

@@ -1,18 +1,19 @@
 import './App.css';
-import Contents from './Components/Contents/contents.components';
-import LeftNav from './Components/left-nav/left-nav.component';
-import RightNav from './Components/right-nav/right-nav.components';
+
 import TopNav from './Components/top-nav/top-nav.component';
+import { Route, Switch } from 'react-router-dom';
+
+import ProfilePage from './pages/profile/profile.page';
+import HomePage from './pages/home/home.page';
 
 function App() {
   return (
     <div className="App">
       <TopNav/>
-      <div className='main'>
-        <LeftNav/>
-        <Contents/>
-        <RightNav/>
-      </div>
+      <Switch>
+        <Route exact path='/profile' component={ProfilePage} />
+        <Route path='/' component={HomePage} />
+      </Switch>
     </div>
   );
 }

@@ -2,11 +2,14 @@ import './text-input.styles.scss';
 
 const TextInput = ({children, ...otherprops}) => {
   return (
-    <input
-      type='text'
-      className='text-input'
-      {...otherprops}
-    />
+    <div className='text-input'>
+      <input
+        type='text'
+        className='input'
+        {...otherprops}
+      />
+    </div>
+    
   )
 }
 export default TextInput;

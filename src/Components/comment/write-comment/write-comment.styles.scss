@@ -1,0 +1,28 @@
+@import '../../../layout.scss';
+
+.write-comment {
+  @include v-center();
+  padding: 10px;
+
+  .input {
+    @include h-sb();
+    @include v-center();
+    width: 100%;
+    min-height: 40px;
+    padding: 5px;
+    margin-left: 10px;
+    background-color: #E5E5E5;
+    border-radius: 20px;
+    padding: 0 10px;
+    
+
+    textarea {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      height: auto;
+      background-color: inherit;
+      display: inline-block;
+    }
+  }
+}

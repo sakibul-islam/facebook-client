@@ -1,0 +1,19 @@
+
+.comment {
+  display: flex;
+  padding: 10px;
+
+  .string {
+    margin-left: 10px;
+    background-color: #E5E5E5;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: left;
+
+    .name {
+      font-weight: bold;
+      color: rgb(75, 75, 75);
+    }
+  }
+  
+}

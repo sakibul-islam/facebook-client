@@ -1,22 +1,24 @@
 .home {
   display: flex;
-  height: calc(100vh - 60px);
+  background-color: #F0F2F5;
 
-  .left-nav, .right-nav {
-    width: 25%;
+  @media (max-width: 1000px) {
+    .left-nav, .right-nav {
+      display: none;
+    }
+    .contents {
+      width: 100%;
+    }
   }
-  .contents {
-    width: 50%;
-  }
+  @media (min-width: 1000px) {
+    .left-nav, .right-nav {
+      width: 25%;
+    }
+    .contents {
+      width: 50%;
+    }
 
-  @media (max-width: 800px) {
-  .left-nav, .right-nav {
-    display: none;
-  }
-  .contents {
-    width: 100%;
-  }
-}
+  }  
 }
 
 

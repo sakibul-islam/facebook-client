@@ -13,19 +13,21 @@ import { ReactComponent as CaretDown} from './icons/caret-down.svg';
 
 import IconContainer from './icon-container/icon-container.component';
 import HoverButton from '../hoverButton/hover-button.component';
+import { withRouter } from 'react-router-dom';
+import ProfilePic from '../profile-pic/profile-pic.component';
 
-const TopNav = () => {
+const TopNav = ({ history }) => {
   return (
     <nav className='top-nav'>
       <div className='left'>
         <Logo className='logo'/>
         <div className='search'>
           <SearchIcon className='icon' height='15px'/>
-          <TextInput placeHolder="Search on facebook"/>
+          <TextInput placeholder="Search on facebook"/>
         </div>
       </div>
       <div className='middle'>
-        <HoverButton tooltip='Home'>
+        <HoverButton tooltip='Home' onClick={() => history.push('/')}>
           <IconContainer>
             <Home/>
           </IconContainer>
@@ -47,6 +49,10 @@ const TopNav = () => {
         </HoverButton>
       </div>
       <div className='right'>
+        <HoverButton onClick={() => history.push('/profile')} >
+          <ProfilePic size='30px'/>
+          <span>Sakib</span>
+        </HoverButton>
         <IconContainer tooltip='Create'>
           <Plus/>
         </IconContainer>
@@ -64,4 +70,4 @@ const TopNav = () => {
   )
 }
 
-export default TopNav;
+export default withRouter(TopNav);

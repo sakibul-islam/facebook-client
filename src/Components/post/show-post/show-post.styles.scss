@@ -1,0 +1,56 @@
+@import '../../../layout';
+
+.post {
+  width: 500px;
+  img {
+    width: 100%
+  }
+
+  .post-header {
+    @include v-center();
+    justify-content: space-between;
+    padding: 10px;
+    .left {
+      display: flex;
+
+      .details {
+        @include flex-column();
+        align-items: flex-start;
+        margin-left: 10px;
+
+        .name {
+          font-weight: bold;
+          color: rgb(65, 65, 65);
+        }
+        .time {
+          color: rgb(150, 150, 150);
+        }
+      }
+      
+    }
+  }
+
+  .caption {
+    text-align: left;
+    padding: 0 10px;
+  }
+
+  .quantities {
+    @include h-sb();
+    padding: 10px;
+    border-top: 1px solid #E5E5E5;
+  }
+  .actions {
+    @include h-sb();
+    margin: 0 10px;
+    padding: 5px 0;
+    border: 1px solid #E5E5E5;
+    border-width: 1px 0;
+
+    .hover-button {
+      width: 33%;
+      height: 32px;
+      border-radius: 5px;
+    }
+  }
+}

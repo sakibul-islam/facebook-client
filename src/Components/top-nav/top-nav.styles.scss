@@ -8,6 +8,9 @@
   width: 100%;
   @include v-center();
   background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
   .left {
     @include v-center();
@@ -60,6 +63,21 @@
     justify-content: flex-end;
     width: 30%;
     margin-right: 20px;
+
+    .hover-button {
+      @include v-center();
+      line-height: 1;
+      padding: 5px;
+      border-radius: 20px;
+      background: #F0F2F5;
+
+      .profile-pic {
+        margin-right: 5px;
+      }
+      &:hover {
+      background: #d9dadb;
+      }
+    }
     
     .icon-container {
       margin: 0 5px;

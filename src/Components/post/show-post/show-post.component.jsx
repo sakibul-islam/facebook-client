@@ -2,15 +2,14 @@ import './show-post.styles.scss';
 
 import Card from '../../Card/card.component';
 import ProfilePic from '../../profile-pic/profile-pic.component';
-import  meme from './memes.jpg';
+// import  meme from './memes.jpg';
 import HoverButton from '../../hoverButton/hover-button.component';
 import WriteComment from '../../comment/write-comment/write-comment.component';
 import Comment from '../../comment/show-comment/show-comment.componet';
 import Name from '../../name/name.component';
 
 
-const ShowPost = () => {
-
+const ShowPost = ({post}) => {
   return (
     <div className='post'>
       <Card>
@@ -21,13 +20,13 @@ const ShowPost = () => {
               <span className='names'>
                 <Name name='Sakibul Islam' username='sakib962'/> ❯ <span className='group-name'>Group's Name</span>
               </span>
-              <sapn className='time'>1h ago</sapn>
+              <span className='time'>1h ago</span>
             </div>
           </div>
           <div className='right'>*</div>
         </div>
-        <div className='caption'>Excepteur sunt labore qui culpa officia consectetur ex ut do dolor enim magna. Consequat non tempor anim dolor consequat tempor fugiat consectetur. Consequat amet ullamco consequat sunt.</div>
-        <img src={meme} alt=''/>
+        <div className='caption'>{post.body}</div>
+        {/* <img src={meme} alt=''/> */}
         <div className='quantities'>
           <div className='left'>
             haha, love, like 590
@@ -42,7 +41,7 @@ const ShowPost = () => {
           <HoverButton>Share</HoverButton>
         </div>
         <div className='comments'>
-          <Comment />
+          <Comment string={post.title} />
         </div>
         <WriteComment/>
       </Card>

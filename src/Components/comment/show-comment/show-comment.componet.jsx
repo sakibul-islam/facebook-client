@@ -8,11 +8,11 @@ const Comment = ({name, photoUrl, string}) => (
     <div className='container'>
       <div className='string'>
         <Name username='sakib962' name="Sakibul Islam"/>
-        Eu minim minim duis proident dolore aliqua est dolore laborum et dolore aliquip. Lorem do incididunt nostrud sit labore labore ex ex occaecat non aliquip.
+        {string}
       </div>
       <div className='actions'>
-        <sapn>Like</sapn>
-        <sapn>Reply</sapn>
+        <span>Like</span>
+        <span>Reply</span>
       </div>
     </div>
   </div>

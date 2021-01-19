@@ -62,7 +62,7 @@ const TopNav = ({ history }) => {
         <IconContainer tooltip='Notifications'>
           <Bell/>
         </IconContainer>
-        <IconContainer tooltip='Account'>
+        <IconContainer tooltip='Login' onClick={() => history.push('/login')}>
           <CaretDown/>
         </IconContainer>
       </div>

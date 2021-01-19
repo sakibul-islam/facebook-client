@@ -50,7 +50,7 @@ const TopNav = ({ history }) => {
       </div>
       <div className='right'>
         <HoverButton onClick={() => history.push('/profile')} >
-          <ProfilePic size='30px'/>
+          <ProfilePic/>
           <span>Sakib</span>
         </HoverButton>
         <IconContainer tooltip='Create'>

@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <TopNav/>
       <Switch>
-        <Route exact path='/profile' component={ProfilePage} />
-        <Route path='/' component={HomePage} />
+        <Route exact path='/profile/:username' component={ProfilePage} />
+        <Route exact path='/' component={HomePage} />
       </Switch>
     </div>
   );

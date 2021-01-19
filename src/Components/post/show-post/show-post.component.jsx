@@ -6,6 +6,7 @@ import  meme from './memes.jpg';
 import HoverButton from '../../hoverButton/hover-button.component';
 import WriteComment from '../../comment/write-comment/write-comment.component';
 import Comment from '../../comment/show-comment/show-comment.componet';
+import Name from '../../name/name.component';
 
 
 const ShowPost = () => {
@@ -17,8 +18,8 @@ const ShowPost = () => {
           <div className='left'>
             <ProfilePic/>
             <div className='details'>
-              <span className='name'>
-                <span className='owner-name'>Sakibul Islam</span> ❯ <span className='group-name'>Legendary Devs</span>
+              <span className='names'>
+                <Name name='Sakibul Islam' username='sakib962'/> ❯ <span className='group-name'>Group's Name</span>
               </span>
               <sapn className='time'>1h ago</sapn>
             </div>

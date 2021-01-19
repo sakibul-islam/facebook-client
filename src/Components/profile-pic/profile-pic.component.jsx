@@ -1,11 +1,13 @@
 import './profile-pic.styles.scss';
+import { withRouter } from 'react-router-dom';
+import Photo from './sakib.jpg';
 
-const ProfilePic = ({imgUrl, size}) => {
+const ProfilePic = ({user, history}) => {
   return (
-    <div className='profile-pic' style={{height: size, width: size}}>
-      {imgUrl ? <img src={imgUrl} height={size} width={size} alt='' /> : null}
+    <div className='profile-pic' onClick={() => history.push('/profile/sakib962')}>
+      {user ? <img src={user.photoUrl} alt='' /> : <img src={Photo} alt='' />}
     </div>
   )
 }
 
-export default ProfilePic;
+export default withRouter(ProfilePic);

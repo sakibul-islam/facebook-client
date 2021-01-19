@@ -64,6 +64,11 @@
     width: 30%;
     margin-right: 20px;
 
+    .profile-pic {
+      width: 30px;
+      height: 30px;
+    }
+
     .hover-button {
       @include v-center();
       line-height: 1;

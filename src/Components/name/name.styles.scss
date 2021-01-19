@@ -1,0 +1,9 @@
+.name {
+  font-weight: bold;
+  color: rgb(65, 65, 65);
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

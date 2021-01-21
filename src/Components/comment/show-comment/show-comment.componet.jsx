@@ -4,10 +4,10 @@ import Name from '../../name/name.component';
 
 const Comment = ({name, photoUrl, string}) => (
   <div className='comment'>
-    <ProfilePic />
+    <ProfilePic photoURL={photoUrl} />
     <div className='container'>
       <div className='string'>
-        <Name username='sakib962' name="Sakibul Islam"/>
+        <Name username='name123' displayName="Display Name"/>
         {string}
       </div>
       <div className='actions'>

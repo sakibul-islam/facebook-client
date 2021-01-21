@@ -18,7 +18,7 @@ const ShowPost = ({post}) => {
             <ProfilePic/>
             <div className='details'>
               <span className='names'>
-                <Name name='Sakibul Islam' username='sakib962'/> ❯ <span className='group-name'>Group's Name</span>
+                <Name displayName='Display Name' userName='name123'/> ❯ <span className='group-name'>Group's Name</span>
               </span>
               <span className='time'>1h ago</span>
             </div>

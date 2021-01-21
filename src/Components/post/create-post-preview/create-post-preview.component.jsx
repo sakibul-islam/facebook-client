@@ -1,6 +1,6 @@
 import Card from '../../Card/card.component';
+import CurrentUsersProfilePic from '../../current-user/current-users-profile-pic/current-users-profile-pic.component';
 import HoverButton from '../../hoverButton/hover-button.component';
-import ProfilePic from '../../profile-pic/profile-pic.component';
 import './create-post-preview.styles.scss';
 
 const CreatePostPreview = () => {
@@ -9,7 +9,7 @@ const CreatePostPreview = () => {
     <div className='create-post'>
       <Card >
         <div className='header'>
-          <ProfilePic size='40px'/>
+          <CurrentUsersProfilePic/>
           <HoverButton>
             What's on your mind?
           </HoverButton>

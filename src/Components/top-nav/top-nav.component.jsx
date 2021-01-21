@@ -13,12 +13,10 @@ import { ReactComponent as CaretDown} from './icons/caret-down.svg';
 
 import IconContainer from './icon-container/icon-container.component';
 import HoverButton from '../hoverButton/hover-button.component';
+import CurrentUsersProfilePic from '../current-user/current-users-profile-pic/current-users-profile-pic.component';
 import { withRouter } from 'react-router-dom';
-import ProfilePic from '../profile-pic/profile-pic.component';
 
-import { connect } from 'react-redux';
-
-const TopNav = ({ history, displayName, photoURL }) => {
+const TopNav = ({ history }) => {
   return (
     <nav className='top-nav'>
       <div className='left'>
@@ -52,8 +50,7 @@ const TopNav = ({ history, displayName, photoURL }) => {
       </div>
       <div className='right'>
         <HoverButton onClick={() => history.push('/profile')} >
-          <ProfilePic photoURL={photoURL}/>
-          <span>{displayName}</span>
+          <CurrentUsersProfilePic/>
         </HoverButton>
         <IconContainer tooltip='Create'>
           <Plus/>
@@ -72,9 +69,4 @@ const TopNav = ({ history, displayName, photoURL }) => {
   )
 }
 
-const mapStateToProps = ({user: {displayName, photoURL}}) => ({
-  displayName,
-  photoURL
-})
-
-export default connect(mapStateToProps)(withRouter(TopNav));
+export default withRouter(TopNav);

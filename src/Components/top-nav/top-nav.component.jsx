@@ -16,7 +16,9 @@ import HoverButton from '../hoverButton/hover-button.component';
 import { withRouter } from 'react-router-dom';
 import ProfilePic from '../profile-pic/profile-pic.component';
 
-const TopNav = ({ history }) => {
+import { connect } from 'react-redux';
+
+const TopNav = ({ history, name }) => {
   return (
     <nav className='top-nav'>
       <div className='left'>
@@ -51,7 +53,7 @@ const TopNav = ({ history }) => {
       <div className='right'>
         <HoverButton onClick={() => history.push('/profile')} >
           <ProfilePic/>
-          <span>Sakib</span>
+          <span>{name}</span>
         </HoverButton>
         <IconContainer tooltip='Create'>
           <Plus/>
@@ -70,4 +72,8 @@ const TopNav = ({ history }) => {
   )
 }
 
-export default withRouter(TopNav);
+const mapStateToProps = ({user}) => ({
+  name: user.name.firstName
+})
+
+export default connect(mapStateToProps)(withRouter(TopNav));

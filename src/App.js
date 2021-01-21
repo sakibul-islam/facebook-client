@@ -6,18 +6,38 @@ import { Route, Switch } from 'react-router-dom';
 import ProfilePage from './pages/profile/profile.page';
 import HomePage from './pages/home/home.page';
 import LoginPage from "./pages/login/login.page";
+import { Component } from 'react';
+import { auth } from './firebase/firebase.utils';
+import { connect } from 'react-redux';
+import { setUser } from './redux/user/user.action';
 
-function App() {
-  return (
-    <div className="App">
-      <TopNav/>
-      <Switch>
-        <Route exact path='/profile/:username' component={ProfilePage} />
-        <Route exact path='/' component={HomePage} />
-        <Route exact path='/login' component={LoginPage} />
-      </Switch>
-    </div>
-  );
+class App extends Component {
+
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      console.log(user)
+      const {displayName, email, photoURL } = user;
+      this.props.setUser(({displayName, email, photoURL}))
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <TopNav/>
+        <Switch>
+          <Route exact path='/profile/:username' component={ProfilePage} />
+          <Route exact path='/' component={HomePage} />
+          <Route exact path='/login' component={LoginPage} />
+        </Switch>
+      </div>
+    );
+  }
+  
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => dispatch(setUser(user))
+});
+
+export default connect(null, mapDispatchToProps)(App);

@@ -18,7 +18,7 @@ import ProfilePic from '../profile-pic/profile-pic.component';
 
 import { connect } from 'react-redux';
 
-const TopNav = ({ history, name }) => {
+const TopNav = ({ history, displayName, photoURL }) => {
   return (
     <nav className='top-nav'>
       <div className='left'>
@@ -52,8 +52,8 @@ const TopNav = ({ history, name }) => {
       </div>
       <div className='right'>
         <HoverButton onClick={() => history.push('/profile')} >
-          <ProfilePic/>
-          <span>{name}</span>
+          <ProfilePic photoURL={photoURL}/>
+          <span>{displayName}</span>
         </HoverButton>
         <IconContainer tooltip='Create'>
           <Plus/>
@@ -72,8 +72,9 @@ const TopNav = ({ history, name }) => {
   )
 }
 
-const mapStateToProps = ({user}) => ({
-  name: user.name.firstName
+const mapStateToProps = ({user: {displayName, photoURL}}) => ({
+  displayName,
+  photoURL
 })
 
 export default connect(mapStateToProps)(withRouter(TopNav));

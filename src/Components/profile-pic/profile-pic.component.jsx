@@ -2,10 +2,10 @@ import './profile-pic.styles.scss';
 import { withRouter } from 'react-router-dom';
 import Photo from './sakib.jpg';
 
-const ProfilePic = ({user, history}) => {
+const ProfilePic = ({photoURL, history}) => {
   return (
     <div className='profile-pic' onClick={() => history.push('/profile/sakib962')}>
-      {user ? <img src={user.photoUrl} alt='' /> : <img src={Photo} alt='' />}
+      {photoURL ? <img src={photoURL} alt='' /> : <img src={Photo} alt='' />}
     </div>
   )
 }

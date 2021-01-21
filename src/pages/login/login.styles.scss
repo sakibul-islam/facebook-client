@@ -1,0 +1,12 @@
+.login-page {
+
+  .google-signin-btn {
+    padding: 10px;
+    background-color: rgb(8, 106, 218);
+    color: white;
+
+    &:hover {
+      background-color: rgb(10, 124, 255);
+    }
+  }
+}

@@ -28,11 +28,11 @@ const ProfilePage = ({ match, user }) => {
             <div className='heading'>Intro</div>
             <div>
               Lives in 
-              <sapn className='link'> Dhaka, Bangladesh</sapn>
+              <span className='link'> Dhaka, Bangladesh</span>
             </div>
             <div>
               Followed by 
-              <sapn className='link'> 5000 people</sapn>
+              <span className='link'> 5000 people</span>
             </div>
           </Card>
         </div>

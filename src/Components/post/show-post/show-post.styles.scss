@@ -39,6 +39,34 @@
     @include h-sb();
     padding: 10px;
     border-top: 1px solid #E5E5E5;
+
+    .link {
+      margin: 0 5px;
+      border-bottom: 1px solid transparent;
+
+      &:hover {
+        border-bottom: 1px solid #000;
+        cursor: pointer;
+      }
+    }
+
+    .left {
+      @include v-center();
+
+      .icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+      }
+    }
+
+    .right {
+      @include v-center();
+
+      .quantity {
+        margin-right: 5px;
+      }
+    }
   }
   .actions {
     @include h-sb();
@@ -46,11 +74,17 @@
     padding: 5px 0;
     border: 1px solid #E5E5E5;
     border-width: 1px 0;
+    line-height: 1;
 
     .hover-button {
       width: 33%;
       height: 32px;
       border-radius: 5px;
+      @include v-center();
+
+      .icon {
+        margin-right: 5px;
+      }
     }
   }
 }

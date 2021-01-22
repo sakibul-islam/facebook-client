@@ -30,23 +30,23 @@ const TopNav = ({ history, userName }) => {
       <div className='middle'>
         <HoverButton tooltip='Home' onClick={() => history.push('/')}>
           <IconContainer>
-            <Home/>
+            <Home className='icon'/>
           </IconContainer>
           <div className='bottom-border'></div>
         </HoverButton>
         <HoverButton tooltip='Friends'>
           <IconContainer quantity='7'>
-            <FriendsIcon/>
+            <FriendsIcon className='icon'/>
           </IconContainer>
         </HoverButton>
         <HoverButton tooltip='Watch'>
           <IconContainer>
-            <Watch/>
+            <Watch className='icon'/>
           </IconContainer>
         </HoverButton>
         <HoverButton tooltip='Groups'>
           <IconContainer>
-            <Groups/>
+            <Groups className='icon'/>
           </IconContainer>
         </HoverButton>
       </div>

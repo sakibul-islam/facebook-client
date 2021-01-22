@@ -1,7 +1,6 @@
-@mixin v-center {
-  display: flex;
-  align-items: center;
-}
+@import '../../../layout.scss';
+@import '../../../colors.scss';
+
 .create-post {
 
   .card {
@@ -23,13 +22,13 @@
         height: 40px;
         margin-left: 10px;
         border-radius: 20px;
-        background-color: #f0f2f5;
+        background-color: $bg-primary-color;
         padding: 0 10px;
         @include v-center();
         justify-content: flex-start;
 
         &:hover {
-          background-color: #d2d2d2;
+          background-color: $bg-secondary-color;
         }
       }
     }
@@ -43,6 +42,10 @@
         flex: auto;
         height: 40px;
         @include v-center();
+
+        .icon {
+          margin-right: 5px;
+        }
       }
     }
   }

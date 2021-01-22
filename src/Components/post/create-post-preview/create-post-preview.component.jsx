@@ -2,6 +2,7 @@ import Card from '../../Card/card.component';
 import CurrentUsersProfilePic from '../../current-user/current-users-profile-pic/current-users-profile-pic.component';
 import HoverButton from '../../hoverButton/hover-button.component';
 import './create-post-preview.styles.scss';
+import { LiveVideoIcon, PhotoVideoIcon, FeelingActivityIcon } from '../../icons/icons'
 
 const CreatePostPreview = () => {
 
@@ -16,13 +17,16 @@ const CreatePostPreview = () => {
         </div>
         <div className='media'>
           <HoverButton>
-            Live Video
+            <LiveVideoIcon className='icon'/>
+            <span>Live Video</span>
           </HoverButton>
           <HoverButton>
-            Photo/Video
+            <PhotoVideoIcon className='icon'/>
+            <span>Photo/Video</span>
           </HoverButton>
           <HoverButton>
-            Feeling/Activity
+            <FeelingActivityIcon className='icon'/>
+            <span>Feeling/Activity</span>
           </HoverButton>
         </div>
       </Card>

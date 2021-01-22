@@ -1,5 +1,6 @@
 .contents {
-  width: 50vw;
+  width: 50%;
+  max-width: 600px;
   height: 100%;
   padding: 30px;
   display: flex;
@@ -11,7 +12,7 @@
     width: 100%;
   }
 
-  .create-post {
-    width: 500px;
+  .create-post, .post {
+    width: 100%;
   }
 }

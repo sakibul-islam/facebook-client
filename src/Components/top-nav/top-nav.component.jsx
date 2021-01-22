@@ -15,8 +15,9 @@ import IconContainer from './icon-container/icon-container.component';
 import HoverButton from '../hoverButton/hover-button.component';
 import CurrentUsersProfilePic from '../current-user/current-users-profile-pic/current-users-profile-pic.component';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const TopNav = ({ history }) => {
+const TopNav = ({ history, userName }) => {
   return (
     <nav className='top-nav'>
       <div className='left'>
@@ -31,6 +32,7 @@ const TopNav = ({ history }) => {
           <IconContainer>
             <Home/>
           </IconContainer>
+          <div className='bottom-border'></div>
         </HoverButton>
         <HoverButton tooltip='Friends'>
           <IconContainer quantity='7'>
@@ -49,7 +51,7 @@ const TopNav = ({ history }) => {
         </HoverButton>
       </div>
       <div className='right'>
-        <HoverButton onClick={() => history.push('/profile')} >
+        <HoverButton onClick={() => history.push(`/profile/${userName}`)} >
           <CurrentUsersProfilePic/>
         </HoverButton>
         <IconContainer tooltip='Create'>
@@ -69,4 +71,8 @@ const TopNav = ({ history }) => {
   )
 }
 
-export default withRouter(TopNav);
+const mapStateToProps = ({user: {userName}}) => ({
+  userName: 'name123'
+})
+
+export default connect(mapStateToProps)(withRouter(TopNav));

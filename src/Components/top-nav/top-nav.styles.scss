@@ -5,12 +5,22 @@
 
 .top-nav {
   height: 60px;
+  padding: 3px;
   width: 100%;
-  @include v-center();
+  display: flex;
   background-color: white;
   position: sticky;
   top: 0;
   z-index: 1;
+
+  .hover-button {
+    .bottom-border {
+      width: 100%;
+      position: absolute;
+      bottom: -4px;
+      border-bottom: 3px solid #1877f2;
+    }
+  }
 
   .left {
     @include v-center();
@@ -44,13 +54,20 @@
   }
 
   .middle {
-    @include v-center();
+    display: flex;
     justify-content: space-between;
     width: 50%;
     margin-left: 100px;
 
     .hover-button {
       width: 20%;
+
+      .icon-container {
+        .badge {
+          top: 0px;
+          left: 20px;
+        }
+      }
 
       .tooltip {
         top: 130%;
@@ -81,6 +98,13 @@
       // }
       &:hover {
       background: #d9dadb;
+      }
+
+      .icon-container {
+        .badge {
+          top: -5px;
+          left: 28px;
+        }
       }
     }
     

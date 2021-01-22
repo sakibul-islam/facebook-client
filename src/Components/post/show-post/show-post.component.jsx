@@ -7,7 +7,7 @@ import HoverButton from '../../hoverButton/hover-button.component';
 import WriteComment from '../../comment/write-comment/write-comment.component';
 import Comment from '../../comment/show-comment/show-comment.componet';
 import Name from '../../name/name.component';
-import { LikeIcon, CommentIcon, ShareIcon } from './icons'
+import { LikeIcon, CommentIcon, ShareIcon, ThreeDotsIcon } from '../../icons/icons'
 import {ReactComponent as LikeSvg } from '../../icons/Like.svg';
 
 
@@ -27,7 +27,9 @@ const ShowPost = ({post}) => {
               <span className='time'>1h ago</span>
             </div>
           </div>
-          <div className='right'>*</div>
+          <div className='right'>
+            <ThreeDotsIcon className='dots'/>
+          </div>
         </div>
         <div className='caption'>{post.body}</div>
         {/* <img src={meme} alt=''/> */}

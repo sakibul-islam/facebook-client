@@ -1,4 +1,5 @@
 @import '../../../layout';
+@import '../../../colors.scss';
 
 .post {
   width: 500px;
@@ -28,6 +29,16 @@
       }
       
     }
+    .right {
+      @include v-center();
+      padding: 10px;
+      border-radius: 50%;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $bg-primary-color;
+      }
+    }
   }
 
   .caption {
@@ -39,6 +50,7 @@
     @include h-sb();
     padding: 10px;
     border-top: 1px solid #E5E5E5;
+    color: $text-primary-color;
 
     .link {
       margin: 0 5px;
@@ -72,6 +84,7 @@
     @include h-sb();
     margin: 0 10px;
     padding: 5px 0;
+    color: $text-primary-color;
     border: 1px solid #E5E5E5;
     border-width: 1px 0;
     line-height: 1;

@@ -11,8 +11,9 @@ const Comment = ({name, photoUrl, string}) => (
         {string}
       </div>
       <div className='actions'>
-        <span>Like</span>
-        <span>Reply</span>
+        <span className='link'>Like</span>
+        <span className='link'>Reply</span>
+        <span className='time'>3d</span>
       </div>
     </div>
   </div>

@@ -1,7 +1,5 @@
-@mixin v-center {
-  display: flex;
-  align-items: center;
-}
+@import '../../layout.scss';
+@import '../../colors.scss';
 
 .top-nav {
   height: 60px;
@@ -114,14 +112,14 @@
       min-width: 40px;
       border-radius: 20px;
       cursor: pointer;
-      background-color: #d2d2d2;
+      background-color: $bg-primary-color;
       
       .tooltip {
         top: 130%;
       }
 
       &:hover {
-      background-color: #b8b8b8;
+      background-color: $bg-secondary-color;
       }
     }
   }

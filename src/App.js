@@ -28,7 +28,7 @@ class App extends Component {
       <div className="App">
         <TopNav/>
         <Switch>
-          <Route exact path='/profile/:userName' component={ProfilePage} />
+          <Route path='/profile/:userName' component={ProfilePage} />
           <Route exact path='/' component={HomePage} />
           <Route exact path='/login' component={LoginPage} />
           <Route exact path='/friends' component={FriendsPage} />

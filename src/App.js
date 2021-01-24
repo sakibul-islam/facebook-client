@@ -6,6 +6,8 @@ import { Route, Switch } from 'react-router-dom';
 import ProfilePage from './pages/profile/profile.page';
 import HomePage from './pages/home/home.page';
 import LoginPage from "./pages/login/login.page";
+import FriendsPage from './pages/friends/friends.page';
+
 import { Component } from 'react';
 import { auth } from './firebase/firebase.utils';
 import { connect } from 'react-redux';
@@ -29,6 +31,7 @@ class App extends Component {
           <Route exact path='/profile/:userName' component={ProfilePage} />
           <Route exact path='/' component={HomePage} />
           <Route exact path='/login' component={LoginPage} />
+          <Route exact path='/friends' component={FriendsPage} />
         </Switch>
       </div>
     );

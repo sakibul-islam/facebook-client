@@ -34,7 +34,7 @@ const TopNav = ({ history, userName }) => {
           </IconContainer>
           <div className='bottom-border'></div>
         </HoverButton>
-        <HoverButton tooltip='Friends'>
+        <HoverButton tooltip='Friends' onClick={() => history.push('/friends')}>
           <IconContainer quantity='7'>
             <FriendsIcon className='icon'/>
           </IconContainer>

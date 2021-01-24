@@ -12,7 +12,8 @@ import {ReactComponent as LikeSvg } from '../../icons/Like.svg';
 
 
 const ShowPost = ({post}) => {
-  const {user: {displayName, userName, photoURL}} = post;
+  const {displayName, userName, photoURL} = post.user;
+  const {body, comments } = post;
   return (
     <div className='post'>
       <Card>
@@ -24,14 +25,14 @@ const ShowPost = ({post}) => {
                 <Name displayName={displayName || 'Display Name'} userName={userName || 'user123'} /> 
                 {/* ❯ <span className='group-name'>Group's Name</span> */}
               </span>
-              <span className='time'>1h ago</span>
+              <span className='time'>{post.time}</span>
             </div>
           </div>
           <div className='right'>
             <ThreeDotsIcon className='dots'/>
           </div>
         </div>
-        <div className='caption'>{post.body}</div>
+        <div className='caption'>{body}</div>
         {/* <img src={meme} alt=''/> */}
         <div className='quantities'>
           <div className='left'>
@@ -64,7 +65,11 @@ const ShowPost = ({post}) => {
           </HoverButton>
         </div>
         <div className='comments'>
-          <Comment string={post.title} />
+          {
+            comments.map(comment => (
+              <Comment key={comment.id} {...comment}/>
+            ))
+          }
         </div>
         <WriteComment/>
       </Card>

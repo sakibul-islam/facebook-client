@@ -39,7 +39,7 @@ const Profile = ({profile}) =>  {
                 <img src={homeIcon} alt='' />
               </span>
               <span> Lives in </span>
-              <span className='link'>Dhaka, Bangladesh</span>
+              <span className='link'>Earth</span>
             </div>
             <div className='followed-by'>
               <span className='icon'>

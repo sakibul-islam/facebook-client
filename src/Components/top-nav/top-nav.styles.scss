@@ -11,15 +11,6 @@
   top: 0;
   z-index: 1;
 
-  .hover-button {
-    .bottom-border {
-      width: 100%;
-      position: absolute;
-      bottom: -4px;
-      border-bottom: 3px solid #1877f2;
-    }
-  }
-
   .left {
     @include v-center();
     width: 20%;
@@ -75,6 +66,17 @@
         top: 130%;
       }
     }
+    .hover-button.active {
+      .icon {
+        fill: #1877f2;
+      }
+      .bottom-border {
+        width: 100%;
+        position: absolute;
+        bottom: -4px;
+        border-bottom: 3px solid #1877f2;
+      }
+    }
   }
 
   .right {
@@ -127,4 +129,5 @@
       }
     }
   }
+  
 }

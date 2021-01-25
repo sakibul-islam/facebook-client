@@ -16,16 +16,21 @@ import HoverButton from '../hoverButton/hover-button.component';
 import CurrentUsersProfilePic from '../current-user/current-users-profile-pic/current-users-profile-pic.component';
 import { withRouter } from 'react-router-dom';
 import { Component } from 'react';
+import TabContainer from './tab-container.component';
 
 class TopNav extends Component {
  state={
-   active: 'home'
+   active: 'Home'
+ }
+
+ setActiveTab = (tabName, routeName) => {
+    this.setState({active: tabName})
+    if(routeName) this.props.history.push(`${routeName}`)
  }
 
   render() {
     const { history } = this.props;
     const active = this.state.active;
-    const activeBorder = <div className='bottom-border'></div>
     return (
       <nav className='top-nav'>
         <div className='left'>
@@ -36,56 +41,51 @@ class TopNav extends Component {
           </div>
         </div>
         <div className='middle'>
-          <HoverButton 
-            className={`hover-button ${active === 'home'? 'active' : ''}`}
-            tooltip='Home' 
-            onClick={() => {
-              history.push('/');
-              this.setState({active: 'home'})
-            }}>
-            <IconContainer>
-              <Home className='icon'/>
-            </IconContainer>
-            {active === 'home'? activeBorder : ''}
-          </HoverButton>
-          <HoverButton
-            className={`hover-button ${active === 'friends'? 'active' : ''}`} 
-            tooltip='Friends' onClick={() => {
-              history.push('/friends')
-              this.setState({active: 'friends'})
-            }}>
-            <IconContainer quantity='7'>
-              <FriendsIcon className='icon'/>
-            </IconContainer>
-            {active === 'friends'? activeBorder : ''}
-          </HoverButton>
-          <HoverButton
-            className={`hover-button ${active === 'watch'? 'active' : ''}`}
-            onClick={() => {
-              history.push('/watch')
-              this.setState({active: 'watch'})
-            }}
-            tooltip='Watch'>
-            <IconContainer>
-              <Watch className='icon'/>
-            </IconContainer>
-            {active === 'watch'? activeBorder : ''}
-          </HoverButton>
-          <HoverButton 
-            className={`hover-button ${active === 'groups'? 'active' : ''}`}
-            onClick={() => {
-              history.push('/groups')
-              this.setState({active: 'groups'})
-            }}
-            tooltip='Groups'>
-            <IconContainer>
-              <Groups className='icon'/>
-            </IconContainer>
-            {active === 'groups'? activeBorder : ''}
-          </HoverButton>
+          <TabContainer 
+            tabName='Home'
+            routeName='/'
+            bordered
+            active={this.state.active} 
+            handleClick={this.setActiveTab}
+          >
+            <Home className='icon' />
+          </TabContainer>
+          <TabContainer 
+            tabName='Friends'
+            routeName='/friends'
+            bordered
+            quantity='7'
+            active={this.state.active} 
+            handleClick={this.setActiveTab}
+          >
+            <FriendsIcon className='icon' />
+          </TabContainer>
+          <TabContainer 
+            tabName='Watch'
+            routeName='/watch'
+            bordered
+            active={this.state.active} 
+            handleClick={this.setActiveTab}
+          >
+            <Watch className='icon' />
+          </TabContainer>
+          <TabContainer 
+            tabName='Groups'
+            routeName='/groups'
+            bordered
+            active={this.state.active} 
+            handleClick={this.setActiveTab}
+          >
+            <Groups className='icon' />
+          </TabContainer>
         </div>
         <div className='right'>
-          <HoverButton onClick={() => history.push(`/profile`)} >
+          <HoverButton
+            className={`hover-button ${active === 'profile'? 'active' : ''}`}
+            onClick={() => {
+              history.push(`/profile`);
+              this.setState({active: 'profile'})
+            }} >
             <CurrentUsersProfilePic/>
           </HoverButton>
           <IconContainer tooltip='Create'>

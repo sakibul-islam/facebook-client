@@ -1,16 +1,13 @@
-import { connect } from "react-redux";
 
-import profiles from '../../profilesObj';
-import { withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import Profile from '../../Components/profile/profile.component';
 
-const ProfilePage = ({profile}) => (
-  <Profile profile={ profile || this.props.user}/>
+const ProfilePage = ({match}) => (
+  <div>
+    <Route exact path='/profile' component={Profile} />
+    <Route path={`${match.path}/:userName`} component={Profile}/>
+  </div>
+ 
 )
 
-const mapStateToProps = ({user}, props) => ({
-  user,
-  profile: profiles[props.match.params.userName]
-})
-
-export default connect(mapStateToProps)(withRouter(ProfilePage));
+export default withRouter(ProfilePage);

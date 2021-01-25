@@ -4,7 +4,6 @@ import { ReactComponent as Logo} from './icons/logo.svg';
 import { ReactComponent as SearchIcon} from './icons/search.svg';
 import { ReactComponent as FriendsIcon} from './icons/Friends.svg';
 import { ReactComponent as Home} from './icons/Home.svg';
-// import { ReactComponent as HomeFill} from './icons/Home-fill.svg';
 import { ReactComponent as Watch} from './icons/Watch.svg';
 import { ReactComponent as Groups} from './icons/Groups.svg';
 import { ReactComponent as Plus} from './icons/Plus.svg';
@@ -16,7 +15,6 @@ import IconContainer from './icon-container/icon-container.component';
 import HoverButton from '../hoverButton/hover-button.component';
 import CurrentUsersProfilePic from '../current-user/current-users-profile-pic/current-users-profile-pic.component';
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { Component } from 'react';
 
 class TopNav extends Component {
@@ -25,7 +23,7 @@ class TopNav extends Component {
  }
 
   render() {
-    const { history, userName } = this.props;
+    const { history } = this.props;
     const active = this.state.active;
     const activeBorder = <div className='bottom-border'></div>
     return (
@@ -87,7 +85,7 @@ class TopNav extends Component {
           </HoverButton>
         </div>
         <div className='right'>
-          <HoverButton onClick={() => history.push(`/profile/${userName}`)} >
+          <HoverButton onClick={() => history.push(`/profile`)} >
             <CurrentUsersProfilePic/>
           </HoverButton>
           <IconContainer tooltip='Create'>
@@ -109,8 +107,4 @@ class TopNav extends Component {
   
 }
 
-const mapStateToProps = ({user: {userName}}) => ({
-  userName: 'name123'
-})
-
-export default connect(mapStateToProps)(withRouter(TopNav));
+export default withRouter(TopNav);

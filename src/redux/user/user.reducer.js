@@ -1,9 +1,7 @@
 import userActions from "./user.action.types";
 
 const INITIAL_STATE = {
-  name: 'Sakibul Islam',
-  photoURL: '',
-  userName: 'sakib962'
+  bio: 'Just a user'
 }
 
 const userReducer = (state = INITIAL_STATE, action = {}) => {

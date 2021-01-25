@@ -6,6 +6,10 @@ import './profile.styles.scss';
 import homeIcon from './home.png'
 import followIcon from './follow.png';
 
+import { connect } from "react-redux";
+
+import profiles from '../../profilesObj';
+
 const Profile = ({profile}) =>  {
   const { displayName, nickName, photoURL, bio } = profile;
   return (
@@ -63,6 +67,10 @@ const Profile = ({profile}) =>  {
   )
 }
 
+const mapStateToProps = ({user}, {match: {params: {userName}}}) => ({
+  currentUser: user,
+  profile: userName ? profiles[userName] : user
+})
 
 
-export default Profile;
+export default connect(mapStateToProps)(Profile);

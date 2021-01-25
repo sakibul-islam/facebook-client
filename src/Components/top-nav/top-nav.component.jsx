@@ -20,7 +20,7 @@ import TabContainer from './tab-container.component';
 
 class TopNav extends Component {
  state={
-   active: 'Home'
+   active: this.props.location.pathname || 'home'
  }
 
  setActiveTab = (tabName, routeName) => {
@@ -29,8 +29,9 @@ class TopNav extends Component {
  }
 
   render() {
-    const { history } = this.props;
+    const { history, location } = this.props;
     const active = this.state.active;
+    console.log(location.pathname)
     return (
       <nav className='top-nav'>
         <div className='left'>

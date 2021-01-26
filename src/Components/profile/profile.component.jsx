@@ -43,7 +43,7 @@ const Profile = ({profile}) =>  {
               <img src={studyIcon} alt='' />
             </span>
             <span> Studies at </span>
-            <span className='link'>Hogwarts</span>
+            <span className='link'>School</span>
           </div>
           <div className='section lives-in'>
             <span className='icon'>

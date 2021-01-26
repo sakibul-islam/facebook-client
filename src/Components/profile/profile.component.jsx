@@ -62,14 +62,15 @@ const Profile = ({profile}) =>  {
         </div>
         
         {
-          !photos.length ? null 
-          : (
-            <div className='photos'>
-              {
-                photos.map(photoUrl => <div className='photo' style={{backgroundImage: `url(${photoUrl})`}}></div>)
-              }
-            </div>
-          )
+          photos ? ( 
+            photos.length ? (
+              <div className='photos'>
+                {
+                  photos.map(photoUrl => <div className='photo' style={{backgroundImage: `url(${photoUrl})`}}></div>)
+                }
+              </div>
+            ) : null 
+          ) : null
         }
         
         {/* <div className='right-side'>

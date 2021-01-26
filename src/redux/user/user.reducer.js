@@ -1,7 +1,7 @@
 import userActions from "./user.action.types";
 
 const INITIAL_STATE = {
-  bio: 'Just a user'
+  bio: 'New User'
 }
 
 const userReducer = (state = INITIAL_STATE, action = {}) => {

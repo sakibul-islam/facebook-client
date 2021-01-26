@@ -18,7 +18,7 @@ class AddFriendsList extends Component {
     return (
       !this.state.users.length ? null
       :
-      (<div className='add-friends-list'>
+      (<div className='user-list'>
         <h1>People you may know</h1>
         <div className='list'>
           {

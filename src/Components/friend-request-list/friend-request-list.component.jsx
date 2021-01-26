@@ -17,7 +17,7 @@ class RequestList extends Component {
     return (
       !this.state.users.length ? null
       :
-      (<div className='add-friends-list'>
+      (<div className='user-list'>
         <h1>People Sent You Friend Request</h1>
         <div className='list'>
           {

@@ -1,17 +1,18 @@
-import './add-friend.styles.scss';
+import './friend-request.styles.scss';
+
 import HoverButton from '../hoverButton/hover-button.component';
 import { withRouter } from 'react-router-dom';
 import { Component } from 'react';
 import UserCard from '../user-card/user-card.component';
 
-class AddFriend extends Component {
+class FriendRequest extends Component {
   state = {
-    requested: false
+    accepted: false
   }
 
   handleRequest = () => {
     this.setState(prevState => ({
-      requested: !prevState.requested
+      accepted: !prevState.accepted
     }))
   }
 
@@ -21,21 +22,20 @@ class AddFriend extends Component {
     return (
       <UserCard photoURL={photoURL} displayName={displayName} userName={userName} removeUser={removeUser}>
         {
-          !this.state.requested
+          !this.state.accepted
           ?  (
             <HoverButton 
               className='sent-request' 
               onClick={this.handleRequest}
               >
-                Add Friend
+                Confrim Request
             </HoverButton>
           )
           :  (
             <HoverButton 
-              className='cancel-request'
-              onClick={this.handleRequest}
+              className='accepted'
               >
-                Cancel Request
+                Added
             </HoverButton>
           )
         }
@@ -44,4 +44,4 @@ class AddFriend extends Component {
   }
 };
 
-export default withRouter(AddFriend);
+export default withRouter(FriendRequest);

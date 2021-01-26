@@ -58,6 +58,11 @@ const profiles = {
   }
 }
 
-export const userProfileForAddFriend = Object.keys(profiles).map(key => profiles[key])
+export const userProfileForAddFriend = Object.keys(profiles).filter((key, i) => (i % 2)).map(key => profiles[key])
 
+console.log(userProfileForAddFriend)
+
+export const userWhoSentRequest = Object.keys(profiles).filter((key, i) => !(i % 2)).map(key => profiles[key])
+
+console.log(userWhoSentRequest)
 export default profiles;

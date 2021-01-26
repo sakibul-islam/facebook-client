@@ -4,7 +4,7 @@ const profiles = {
     userName: 'harry',
     nickName: 'The Chosen One',
     photoURL: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/Harry_Potter_character_poster.jpg/220px-Harry_Potter_character_poster.jpg",
-    bio: 'leader of Dumbledore\'s Army.',
+    bio: 'Gryffindor Quidditch Seeker and Leader of Dumbledore\'s Army.',
     born: '31 July 1980'
   },
   hermione: {
@@ -38,15 +38,9 @@ const profiles = {
     photoURL: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e7/Ginny_Weasley_poster.jpg/220px-Ginny_Weasley_poster.jpg',
     bio: 'Quidditch Seeker and Chaser, and member of Dumbledore\'s Army',
     born: '11 August 1981'
-  },
-  name: {
-    displayName: '',
-    userName: '',
-    nickName: '',
-    photoURL: '',
-    bio: '',
-    born: ''
   }
 }
+
+export const userProfileForAddFriend = Object.keys(profiles).map(key => profiles[key])
 
 export default profiles;

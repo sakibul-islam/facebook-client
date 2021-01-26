@@ -1,8 +1,13 @@
+import './friends.page.styles.scss'
+import AddFriend from "../../Components/add-friend/add-friend.component";
+import { userProfileForAddFriend } from '../../profilesObj';
 
 const FriendsPage = () => (
-  <div>
-    <h1>Find Friends</h1>
-    <p>Why do you find friends on facebook !??</p>
+  <div className='friends-page'>
+    <h1>People you may know</h1>
+    {
+      userProfileForAddFriend.map((user, i) => <AddFriend key={i} user={user}/>)
+    }
   </div>
 )
 

@@ -3,7 +3,7 @@ import HoverButton from '../hoverButton/hover-button.component';
 import { CrossIcon } from '../icons/icons';
 import { withRouter } from 'react-router-dom';
 
-const AddFriend = ({user, history}) => {
+const AddFriend = ({user, history, removeUser}) => {
   const {photoURL, displayName, userName} = user
   return (
   <div className='add-friend'>
@@ -13,7 +13,10 @@ const AddFriend = ({user, history}) => {
       onClick={() => history.push(`/profile/${userName}`)}
     >
       <span className='remove-btn' onClick={
-        
+        (e) => {
+          e.stopPropagation();
+          removeUser(userName)
+        }
       }>
         <CrossIcon />
       </span>

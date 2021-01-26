@@ -1,13 +1,9 @@
 import './friends.page.styles.scss'
-import AddFriend from "../../Components/add-friend/add-friend.component";
-import { userProfileForAddFriend } from '../../profilesObj';
+import AddFriendsList from '../../Components/add-friends-list/add-friends-list.component';
 
 const FriendsPage = () => (
   <div className='friends-page'>
-    <h1>People you may know</h1>
-    {
-      userProfileForAddFriend.map((user, i) => <AddFriend key={i} user={user}/>)
-    }
+    <AddFriendsList />
   </div>
 )
 

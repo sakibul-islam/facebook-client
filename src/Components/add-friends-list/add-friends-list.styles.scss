@@ -1,0 +1,11 @@
+@import '../../colors.scss';
+
+.add-friends-list {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 20px 30px;
+  min-height: 445px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: $shadow-secondary;
+}

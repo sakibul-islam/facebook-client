@@ -16,15 +16,16 @@ class AddFriendsList extends Component {
 
   render() {
     return (
-      <div className='add-friends-list'>
+      !this.state.users.length ? null
+      :
+      (<div className='add-friends-list'>
         <h1>People you may know</h1>
         <div className='list'>
           {
             this.state.users.map((user) => <AddFriend key={user.userName} user={user} removeUser={this.removeUser}/>)
           }
         </div>
-        
-      </div>
+      </div>)
     )
   }
 }

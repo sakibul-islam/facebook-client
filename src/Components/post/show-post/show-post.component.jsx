@@ -37,7 +37,7 @@ const ShowPost = ({post}) => {
         <div className='quantities'>
           <div className='left'>
             <LikeSvg className='icon'/>
-            <spna className='quantity link'>40</spna>
+            <span className='quantity link'>40</span>
           </div>
           <div className='right'>
             <div className='comments link'>

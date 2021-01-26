@@ -17,13 +17,14 @@ const profiles = {
     userName: 'hermione',
     nickName: 'Hermione',
     photoURL: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Hermione_Granger_poster.jpg/220px-Hermione_Granger_poster.jpg',
+    coverURL: "https://img.cinemablend.com/filter:scale/quill/d/2/7/6/5/b/d2765bf76378dd23f435d6016b917e71b7920b24.jpg?mw=600",
     photos: [
-      "https://static.wikia.nocookie.net/harrypotter/images/8/88/Hermione_Granger_HBP_promo.jpg/revision/latest?cb=20140623153123",
       "https://static.wikia.nocookie.net/9c6388c0-6df6-457e-8c3b-da4d7e70b892",
       "https://images.fanpop.com/images/image_uploads/Hermione-Granger-hermione-granger-771263_306_400.jpg",
       "https://pm1.narvii.com/6348/8fd348d1893fe1beeeeca1a423a6bdb6919cd7cc_00.jpg",
       "https://i1.wp.com/media.tumblr.com/tumblr_l64ucuNPXu1qziwld.jpg",
-      "https://i.redd.it/motla7vyqbo51.jpg"
+      "https://i.redd.it/motla7vyqbo51.jpg",
+      "https://www.thenews.com.pk//assets/uploads/updates/2020-07-02/680963_1095987_harrypotter3_updates.jpg"
     ],
     bio: 'Prefect and co-founder of Dumbledore\'s Army.',
     born: '19 September 1979'

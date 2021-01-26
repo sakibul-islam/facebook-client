@@ -1,9 +1,11 @@
 @import '../../layout.scss';
+@import '../../colors.scss';
 
 .profile-page {
   @include v-center();
   flex-direction: column;
   background-color: #F0F2F5;
+  padding-bottom: 50px;
 
   .profile-header {
     @include h-center();
@@ -17,8 +19,8 @@
       @include h-center();
       position: relative;
       width: 100%;
-      height: 30vw;
-      max-height: 300px;
+      height: 40vw;
+      max-height: 400px;
 
       .cover-pic {
         width: 100%;
@@ -58,33 +60,39 @@
 
   .main {
     display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 900px;
 
-    .left-side {
-      width: 40%;
+    .intro {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 30px;
+      margin: 20px 0;
+      width: 100%;
+      box-shadow: $shadow-secondary;
+      border-radius: 10px;
 
-      .card {
+      .heading {
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+      .section {
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-
-        &>div {
-          padding: 10px 0;
+        padding: 10px 0;
+        
+        span {
+          margin-right: 5px;
         }
-
+        
         .icon {
           img {
             filter: invert(0.59) sepia(0.11);
           }
         }
 
-        .heading {
-          font-size: 25px;
-          font-weight: bold;
-        }
-        
         .link {
           font-weight: bold;
           color: rgb(61, 61, 61);
@@ -92,14 +100,28 @@
             text-decoration: underline;
           }
         }
-      }
+      }    
     }
     
-    .right-side {
-      width: 60%;
+    .photos {
+      box-shadow: $shadow-secondary;
+      border-radius: 10px;
+      width: 100%;
+      padding: 10px;
+      display: grid;
+      grid-gap: .5rem;
+      grid-template-columns: 1fr 1fr 1fr;
 
-      .post {
-        width: 100%;
+      .photo {
+        background-position: center;
+        background-size: cover;
+        box-shadow: $shadow-primary;
+
+        &::after {
+          content: '';
+          display: block;
+          padding-bottom: 100%;
+        }
       }
     }
   }

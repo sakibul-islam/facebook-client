@@ -11,17 +11,16 @@ import { connect } from "react-redux";
 import profiles from '../../profilesObj';
 
 const Profile = ({profile}) =>  {
-  const { displayName, nickName, photoURL, bio } = profile;
+  const { displayName, nickName, photoURL, coverURL, bio } = profile;
   return (
     <div className='profile-page'>
       <div className='profile-header'>
         <div className='header-pic'>
           <div className='cover-pic' 
-            style={{backgroundImage: 'url(https://coverfiles.alphacoders.com/128/128297.jpg)'}}
+            style={{backgroundImage: `url(${coverURL || 'https://coverfiles.alphacoders.com/128/128297.jpg'})`}}
           >
           </div>
-          <div className='profile-pic'>
-            <img src={photoURL} alt='' />
+          <div className='profile-pic' style={{backgroundImage: `url(${photoURL})`}}>
           </div>
         </div>
         <div className='name-bio'>

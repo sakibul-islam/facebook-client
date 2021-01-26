@@ -4,6 +4,7 @@ import AddFriendsList from '../../Components/add-friends-list/add-friends-list.c
 const FriendsPage = () => (
   <div className='friends-page'>
     <AddFriendsList />
+    <AddFriendsList />
   </div>
 )
 

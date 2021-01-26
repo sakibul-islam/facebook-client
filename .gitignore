@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+/fb-colors.css
 # production
 /build
 

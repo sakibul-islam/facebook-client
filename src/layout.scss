@@ -11,6 +11,11 @@
   justify-content: space-between;
 }
 
+@mixin hover-button {
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
 @mixin flex-column {
   display: flex;

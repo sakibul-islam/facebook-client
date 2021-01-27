@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 import profiles from '../../profilesObj';
 
 const Profile = ({profile}) =>  {
-  const { displayName, nickName, photoURL, photos, coverURL, bio } = profile;
+  const { displayName, nickName, photoURL, photos, coverURL, bio, born } = profile;
   return (
     <div className='profile-page'>
       <div className='profile-header'>
@@ -52,6 +52,18 @@ const Profile = ({profile}) =>  {
             <span> Lives in </span>
             <span className='link'>Earth</span>
           </div>
+          {
+            born ? (
+              <div className='section born'>
+                <span className='icon'>
+                  <img src={homeIcon} alt='' />
+                </span>
+                <span>Born</span>
+                <span className='link'>{born}</span>
+              </div>
+            ) : null
+          }
+          
           <div className='section followed-by'>
             <span className='icon'>
               <img src={followIcon} alt='' />

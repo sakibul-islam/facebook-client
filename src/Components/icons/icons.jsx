@@ -26,6 +26,11 @@ export const LikeIcon = styled.i`
   background-position: 0 -172px;
 `;
 
+export const LikedIcon = styled.i`
+  ${icons2Styles}
+  background-position: 0 -153px;
+`;
+
 export const CommentIcon = styled.i`
   ${icons2Styles}
   background-position: 0 -134px;

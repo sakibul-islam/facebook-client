@@ -1,0 +1,16 @@
+.gun-container {
+  width: auto;
+  height: 50vh;
+  position: fixed;
+  bottom: 0;
+  right: 15vw;
+  pointer-events: none;
+
+  @media screen and (max-width: 700px) {
+    right: -10vw;
+  }
+
+  img {
+    height: 100%;
+  }
+}

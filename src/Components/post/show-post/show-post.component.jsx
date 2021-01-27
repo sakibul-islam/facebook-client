@@ -15,7 +15,7 @@ import { Component } from 'react';
 class ShowPost extends Component {
   state = {
     liked: false,
-    totalLike: 21
+    totalLike: 7
   }
 
   // toggleLike = () => {
@@ -23,7 +23,6 @@ class ShowPost extends Component {
   //     liked: !prevState.liked,
   //     totalLike: nextState.liked ? prevState.totalLike + 1 : prevState.totalLike - 1
   //   }));
-    
   // }
 
   toggleLike = () => {
@@ -31,7 +30,6 @@ class ShowPost extends Component {
       liked: !prevState.liked,
       totalLike: prevState.liked ? prevState.totalLike + 1 : prevState.totalLike - 1
     }));
-    
   }
 
   render() {

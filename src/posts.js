@@ -8,7 +8,7 @@ const posts = [
     id: 0,
     time: '17 Jan 2012',
     title: "nesciunt quas odio",
-    body: "repudiandae veniam quaerat sunt sed alias aut fugiat sit autem sed est voluptatem omnis possimus esse voluptatibus quis est aut tenetur dolor neque",
+    body: "Irure sit nostrud aliqua laboris eiusmod exercitation nostrud ex velit. Culpa proident culpa laboris sint labore commodo nulla duis ad non enim minim aute magna. Occaecat id dolor duis consequat proident non qui cillum reprehenderit est exercitation aliquip ex aliqua. Duis ad ullamco ullamco Lorem ea occaecat duis. Occaecat non excepteur id do aliqua laboris non adipisicing.",
     comments: [
       {
         user: {
@@ -18,7 +18,7 @@ const posts = [
         },
         id: 1,
         time: '17 Jan 2012',
-        body: 'omnis possimus esse voluptatibus quis est'
+        body: 'Quis elit labore id commodo sunt sunt sunt.'
       },
       {
         user: {
@@ -28,7 +28,7 @@ const posts = [
         },
         id: 2,
         time: '17 Jan 2012',
-        body: 'omnis possimus esse voluptatibus quis est'
+        body: 'Proident duis non labore duis Lorem minim veniam ad magna.'
       }
     ]
   },

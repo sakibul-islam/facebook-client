@@ -26,12 +26,15 @@ class ShowPost extends Component {
   // }
 
   toggleLike = () => {
-    this.setState((prevState) => ({
-      liked: !prevState.liked,
-      totalLike: prevState.liked ? prevState.totalLike + 1 : prevState.totalLike - 1
-    }));
+    this.setState((prevState) => {
+      return  ({
+        liked: !prevState.liked,
+        totalLike: !prevState.liked ? prevState.totalLike + 1 : prevState.totalLike - 1
+      })
+    });
   }
 
+  
   render() {
     const { post } = this.props
     const {displayName, userName, photoURL} = post.user;
@@ -74,11 +77,13 @@ class ShowPost extends Component {
           </div>
           <div className='actions'>
             <HoverButton onClick={this.toggleLike} >
-              {
-                this.state.liked 
-                ? <LikedIcon className='icon'/> 
-                : <LikeIcon className='icon'/>
-              }
+              <div className='icon-container'>
+                {
+                  this.state.liked 
+                  ? <LikedIcon className='icon active'/> 
+                  : <LikeIcon className='icon'/>
+                }
+              </div>
               <span className='icnos-name'> Like</span>
             </HoverButton>
             <HoverButton>
@@ -99,6 +104,7 @@ class ShowPost extends Component {
           </div>
           <WriteComment/>
         </Card>
+        
       </div>
     )
   }

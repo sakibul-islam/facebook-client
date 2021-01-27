@@ -1,11 +1,18 @@
+import { connect } from 'react-redux';
 import './gun.styles.scss';
 import gunPng from './gun1.png';
 
-const Gun = () => (
-  <div className='gun-container'>
-    <img src={gunPng} alt=''/>
-  </div>
-  
-);
+const Gun = ({fire}) => {
+  console.log(fire)
+  return fire.fireMode 
+  ? (
+    <div className='gun-container'>
+      <img src={gunPng} alt=''/>
+    </div> 
+  ) : null
+}
+const mapStatetoProps = ({fire}) => ({
+  fire
+})
 
-export default Gun;
+export default connect(mapStatetoProps)(Gun);

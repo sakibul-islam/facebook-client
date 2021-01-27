@@ -96,9 +96,28 @@
       border-radius: 5px;
       @include v-center();
 
-      .icon {
-        margin-right: 5px;
+      .icon-container {
+        .icon {
+          margin-right: 5px;
+        }
+        .icon.active {
+          animation: fadeInBottomRight .2s;
+        }
       }
+
+      
     }
   }
+
+  @keyframes fadeInBottomRight {
+    from {
+      opacity: 0;
+      transform: translate3d(200%, 200%, 0) scale(2);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+  
 }

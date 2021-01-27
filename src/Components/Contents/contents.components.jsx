@@ -2,6 +2,7 @@ import CreatePostPreview from '../post/create-post-preview/create-post-preview.c
 import ShowPost from '../post/show-post/show-post.component';
 import './contents.styles.scss';
 import posts from '../../posts';
+import Gun from '../gun/gun.component';
 
 const Contents = () => {
 
@@ -13,6 +14,7 @@ const Contents = () => {
           <ShowPost post={post} key={post.id} />
         ))
       }
+      <Gun />
     </div>
   )
 }

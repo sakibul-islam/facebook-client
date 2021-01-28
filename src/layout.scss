@@ -6,9 +6,18 @@
   display: flex;
   justify-content: center;
 }
-@mixin h-sb {
+@mixin fr-h-sb {
   display: flex;
   justify-content: space-between;
+}
+@mixin fr-h-ss {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@mixin fc-h-ss {
+  display: flex;
+  align-items: flex-start;
 }
 
 @mixin hover-button {

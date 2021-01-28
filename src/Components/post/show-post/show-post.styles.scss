@@ -48,7 +48,7 @@
   }
 
   .quantities {
-    @include h-sb();
+    @include fr-h-sb();
     padding: 10px;
     border-top: 1px solid #E5E5E5;
     color: $text-primary-color;
@@ -82,7 +82,7 @@
     }
   }
   .actions {
-    @include h-sb();
+    @include fr-h-sb();
     margin: 0 10px;
     padding: 5px 0;
     color: $text-primary-color;

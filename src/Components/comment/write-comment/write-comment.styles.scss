@@ -6,7 +6,7 @@
   padding: 10px;
 
   .input {
-    @include h-sb();
+    @include fr-h-sb();
     @include v-center();
     width: 100%;
     min-height: 40px;

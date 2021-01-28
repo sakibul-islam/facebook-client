@@ -2,6 +2,7 @@
 @import '../../colors.scss';
 
 .top-nav {
+  position: relative;
   height: 60px;
   padding: 3px;
   width: 100%;
@@ -89,22 +90,6 @@
       width: 30px;
       height: 30px;
     }
-
-    .profile {
-      @include v-center();
-      line-height: 1;
-      padding: 5px;
-      border-radius: 20px;
-      background: #F0F2F5;
-
-      &:hover {
-      background: #d9dadb;
-      }
-
-      &.active {
-        background:  #1876f241;
-      }
-    }
     
     .hover-button {
       padding: 0;
@@ -129,10 +114,21 @@
       &.active {
         .icon-container {
           background-color: #1876f241;
+
+          .icon {
+            fill: #1877f2;
+          }
         }
       }
-    }
-    
+    }  
   }
-  
+  .dropdown {
+      position: absolute;
+      top: 100%;
+      right: 1vw;
+      background-color: #fff;
+      width: 350px;
+      box-shadow: $shadow-primary-2;
+      border-radius: 0 0 10px 10px;
+    }
 }

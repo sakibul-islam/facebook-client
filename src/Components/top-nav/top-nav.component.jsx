@@ -15,6 +15,7 @@ import CurrentUsersProfilePic from '../current-user/current-users-profile-pic/cu
 import { withRouter } from 'react-router-dom';
 import { Component } from 'react';
 import TabContainer from './tab-container.component';
+import DropdownNotification from '../dropdown-notification/dropdown-notification.component';
 
 class TopNav extends Component {
  state={
@@ -26,7 +27,7 @@ class TopNav extends Component {
     this.setState({activeTab: tabName})
     if(routeName) this.props.history.push(`${routeName}`)
  }
- setDropdownActiveTab = (tabName) => {
+ setDropdownToggleTab = (tabName) => {
   this.setState(prevState => ({
     activeDropdownTab: prevState.activeDropdownTab === tabName ? '' : tabName
   }))
@@ -97,9 +98,9 @@ class TopNav extends Component {
             tabName='Create'
             bordered
             active={activeDropdownTab} 
-            handleClick={this.setDropdownActiveTab}
+            handleClick={this.setDropdownToggleTab}
           >
-            <Plus/>
+            <Plus className='icon'/>
           </TabContainer>
           
           <TabContainer
@@ -107,9 +108,9 @@ class TopNav extends Component {
             bordered
             quantity='1'
             active={activeDropdownTab} 
-            handleClick={this.setDropdownActiveTab}
+            handleClick={this.setDropdownToggleTab}
           >
-            <Messenger/>
+            <Messenger className='icon'/>
           </TabContainer>
 
           <TabContainer
@@ -117,21 +118,23 @@ class TopNav extends Component {
             bordered
             quantity='5'
             active={activeDropdownTab} 
-            handleClick={this.setDropdownActiveTab}
+            handleClick={this.setDropdownToggleTab}
           >
-            <Bell/>
+            <Bell className='icon'/>
           </TabContainer>
 
           <TabContainer
             tabName='Menu'
             bordered
             active={activeDropdownTab} 
-            handleClick={this.setDropdownActiveTab}
+            handleClick={this.setDropdownToggleTab}
           >
-            <CaretDown/>
+            <CaretDown className='icon'/>
           </TabContainer>
-
         </div>
+        <div className='dropdown'>
+            <DropdownNotification />
+          </div>
       </nav>
     )
   }

@@ -1,0 +1,57 @@
+@import '../../layout.scss';
+@import '../../colors.scss';
+
+.dropdown-menu {
+  padding: 10px;
+
+  
+  .item {
+    @include fr-v-c();
+    display: flex;
+    margin-top: 10px;
+    border-radius: 10px;
+    min-height: 52px;
+    
+    &:hover {
+      background-color: $bg-primary-color;
+      cursor: pointer;
+    }
+
+    .icon-container {
+      padding: 10px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background-color: $bg-primary-color;
+    }
+    .other {
+      @include fc-h-fs();
+
+      .name {
+        font-size: 15px;
+      }
+      .message {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .item.profile {
+    margin: 20px 0;
+    .profile-pic {
+      height: 60px;
+      width: 60px;
+      margin-right: 10px;
+    }
+    .other {
+      .name {
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .message {
+        font-size: 15px;
+        font-weight: 400;
+      }
+    }
+  }
+}
+

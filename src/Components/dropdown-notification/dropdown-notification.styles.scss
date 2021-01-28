@@ -41,7 +41,7 @@
       }
 
       .notification {
-        @include fc-h-ss();
+        @include fc-h-fs();
         flex-direction: column;
 
         .body {

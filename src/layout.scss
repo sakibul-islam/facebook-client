@@ -10,14 +10,21 @@
   display: flex;
   justify-content: space-between;
 }
-@mixin fr-h-ss {
+
+@mixin fr-h-fs {
   display: flex;
   justify-content: flex-start;
 }
 
-@mixin fc-h-ss {
+@mixin fr-v-c {
+  display: flex;
+  align-items: center;
+}
+
+@mixin fc-h-fs {
   display: flex;
   align-items: flex-start;
+  flex-direction: column;
 }
 
 @mixin hover-button {

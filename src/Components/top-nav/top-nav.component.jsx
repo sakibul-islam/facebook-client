@@ -16,6 +16,8 @@ import { withRouter } from 'react-router-dom';
 import { Component } from 'react';
 import TabContainer from './tab-container.component';
 import DropdownNotification from '../dropdown-notification/dropdown-notification.component';
+import DropdownMessenger from '../dropdown-message/dropdown-messenger.component';
+import DropdownMenu from '../dropdown-menu/dropdown-menu.component';
 
 class TopNav extends Component {
   state={
@@ -39,6 +41,10 @@ class TopNav extends Component {
       switch(activeDropdownTab) {
         case 'Notifications':
           return <DropdownNotification />
+        case 'Messenger':
+          return <DropdownMessenger />
+        case 'Menu':
+          return <DropdownMenu />
         default: 
           return null
       }

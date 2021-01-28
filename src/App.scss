@@ -1,0 +1,12 @@
+@import './colors.scss';
+
+html {
+  height: 100%;
+  background-color: $bg-primary-color;
+}
+.App {
+  text-align: center;
+}
+* {
+  box-sizing: border-box;
+}

@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 
 import TopNav from './Components/top-nav/top-nav.component';
 import { Route, Switch } from 'react-router-dom';

@@ -18,18 +18,22 @@ import TabContainer from './tab-container.component';
 
 class TopNav extends Component {
  state={
-   active: this.props.location.pathname || 'home'
+   activeTab: this.props.location.pathname || 'home',
+   activeDropdownTab: ''
  }
 
  setActiveTab = (tabName, routeName) => {
-    this.setState({active: tabName})
+    this.setState({activeTab: tabName})
     if(routeName) this.props.history.push(`${routeName}`)
  }
+ setDropdownActiveTab = (tabName) => {
+  this.setState(prevState => ({
+    activeDropdownTab: prevState.activeDropdownTab === tabName ? '' : tabName
+  }))
+}
 
   render() {
-    const { history, location } = this.props;
-    const active = this.state.active;
-    console.log(location.pathname)
+    const { activeTab, activeDropdownTab } = this.state
     return (
       <nav className='top-nav'>
         <div className='left'>
@@ -44,7 +48,7 @@ class TopNav extends Component {
             tabName='Home'
             routeName='/'
             bordered
-            active={this.state.active} 
+            active={activeTab} 
             handleClick={this.setActiveTab}
           >
             <Home className='icon' />
@@ -54,7 +58,7 @@ class TopNav extends Component {
             routeName='/friends'
             bordered
             quantity='7'
-            active={this.state.active} 
+            active={activeTab} 
             handleClick={this.setActiveTab}
           >
             <FriendsIcon className='icon' />
@@ -63,7 +67,7 @@ class TopNav extends Component {
             tabName='Watch'
             routeName='/watch'
             bordered
-            active={this.state.active} 
+            active={activeTab} 
             handleClick={this.setActiveTab}
           >
             <Watch className='icon' />
@@ -72,61 +76,57 @@ class TopNav extends Component {
             tabName='Groups'
             routeName='/groups'
             bordered
-            active={this.state.active} 
+            active={activeTab} 
             handleClick={this.setActiveTab}
           >
             <Groups className='icon' />
           </TabContainer>
         </div>
         <div className='right'>
-          <div
-            className={`profile ${active === 'profile'? 'active' : ''}`}
-            onClick={() => {
-              history.push(`/profile`);
-              this.setState({active: 'profile'})
-            }} >
+          <TabContainer 
+            tabName='Profile'
+            routeName='/profile'
+            bordered
+            active={activeTab} 
+            handleClick={this.setActiveTab}
+          >
             <CurrentUsersProfilePic/>
-          </div>
+          </TabContainer>
 
           <TabContainer
             tabName='Create'
-            routeName='/'
             bordered
-            active={this.state.active} 
-            handleClick={this.setActiveTab}
+            active={activeDropdownTab} 
+            handleClick={this.setDropdownActiveTab}
           >
             <Plus/>
           </TabContainer>
           
           <TabContainer
             tabName='Messenger'
-            routeName='/'
             bordered
             quantity='1'
-            active={this.state.active} 
-            handleClick={this.setActiveTab}
+            active={activeDropdownTab} 
+            handleClick={this.setDropdownActiveTab}
           >
             <Messenger/>
           </TabContainer>
 
           <TabContainer
             tabName='Notifications'
-            routeName='/'
             bordered
             quantity='5'
-            active={this.state.active} 
-            handleClick={this.setActiveTab}
+            active={activeDropdownTab} 
+            handleClick={this.setDropdownActiveTab}
           >
             <Bell/>
           </TabContainer>
 
           <TabContainer
             tabName='Menu'
-            routeName='/'
             bordered
-            active={this.state.active} 
-            handleClick={this.setActiveTab}
-            onClick={() => history.push('/login')}
+            active={activeDropdownTab} 
+            handleClick={this.setDropdownActiveTab}
           >
             <CaretDown/>
           </TabContainer>

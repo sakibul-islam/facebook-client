@@ -3,27 +3,65 @@ import CurrentUsersName from '../current-user/current-users-name/current-users-n
 import './dropdown-menu.styles.scss';
 import IconContainer from "../top-nav/icon-container/icon-container.component";
 
-import {ReactComponent as TestIcon } from '../top-nav/icons/Messenger.svg'
+import { connect } from "react-redux";
 
-const DropdownMenu = () => (
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
+import { LogOutIcon, SignInIcon } from "../icons/icons";
+
+import { toggleGunMode } from "../../redux/gun/gun.actions";
+
+const DropdownMenu = ({user, toggleGunMode}) => (
   <div className='dropdown-menu'>
-    <div className='item profile'>
-      <CurrentUsersProfilePic />
-      <div className='other'>
-        <CurrentUsersName className='name'/>
-        <span className='message'>See you profile</span>
+    {
+      user.displayName ? (
+      <div className='item profile'>
+        <CurrentUsersProfilePic />
+        <div className='other'>
+          <CurrentUsersName className='name'/>
+          <span className='message'>See you profile</span>
+        </div>
       </div>
-    </div>
+      ) : (
+        <div className='item signin' onClick={() => signInWithGoogle()}>
+          <IconContainer>
+            <SignInIcon />
+          </IconContainer>
+          <div className='other'>
+            <name className='name'>Sign In With Google</name>
+            <span className='message'>Get Free Verified Account</span>
+          </div>
+        </div>
+      )
+    }
+    
     <hr/>
-    <div className='item'>
-      <IconContainer>
-        <TestIcon/>
-      </IconContainer>
-      <div className='other'>
-        <name>Log Out</name>
+
+    <div className='item' onClick={() => toggleGunMode()}>
+      <div className='fireMode' >
+        Toggle Fire Mode
       </div>
     </div>
+
+    {
+      user.displayName ? (
+        <div className='item' onClick={() => auth.signOut()} >
+          <IconContainer>
+            <LogOutIcon />
+          </IconContainer>
+          <div className='other'>
+            <name>Log Out</name>
+          </div>
+        </div>
+      ) : null
+    }
   </div>
 );
 
-export default DropdownMenu;
+const mapStateToProps = ({user}) => ({
+  user
+})
+const mapDispatchToProps = (dispatch) => ({
+  toggleGunMode: () => dispatch(toggleGunMode())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DropdownMenu);

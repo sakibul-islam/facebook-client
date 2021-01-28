@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import icons2 from './icons2.png';
 import icons1 from './icons1.png';
 import icons3 from './icons3.png';
+import icons7 from './icons7.png';
 
 const icons2Styles = css`
   width: 18px;
@@ -19,6 +20,12 @@ const icons3Styles = css`
   height: 18px;
   width: 18px;
   background-image: url(${icons3});
+`;
+
+const icons7Styles = css`
+  height: 20px;
+  width: 20px;
+  background-image: url(${icons7});
 `;
 
 export const LikeIcon = styled.i`
@@ -66,4 +73,14 @@ export const FeelingActivityIcon = styled.i`
 export const CrossIcon = styled.i`
   ${icons3Styles}
   background-position: 1px 74px;
+`;
+
+export const LogOutIcon = styled.i`
+  ${icons7Styles}
+  background-position: 0 399px;
+`;
+
+export const SignInIcon = styled.i`
+  ${icons7Styles}
+  background-position: 0 168px;
 `;

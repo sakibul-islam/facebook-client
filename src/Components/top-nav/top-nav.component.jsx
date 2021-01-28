@@ -18,23 +18,31 @@ import TabContainer from './tab-container.component';
 import DropdownNotification from '../dropdown-notification/dropdown-notification.component';
 
 class TopNav extends Component {
- state={
-   activeTab: this.props.location.pathname || 'home',
-   activeDropdownTab: ''
- }
+  state={
+    activeTab: this.props.location.pathname || 'home',
+    activeDropdownTab: ''
+  }
 
- setActiveTab = (tabName, routeName) => {
+  setActiveTab = (tabName, routeName) => {
     this.setState({activeTab: tabName})
     if(routeName) this.props.history.push(`${routeName}`)
- }
- setDropdownToggleTab = (tabName) => {
-  this.setState(prevState => ({
-    activeDropdownTab: prevState.activeDropdownTab === tabName ? '' : tabName
-  }))
-}
+  }
+  setDropdownToggleTab = (tabName) => {
+    this.setState(prevState => ({
+      activeDropdownTab: prevState.activeDropdownTab === tabName ? '' : tabName
+    }))
+  }
 
   render() {
     const { activeTab, activeDropdownTab } = this.state
+    const showDropdown = () => {
+      switch(activeDropdownTab) {
+        case 'Notifications':
+          return <DropdownNotification />
+        default: 
+          return null
+      }
+    }
     return (
       <nav className='top-nav'>
         <div className='left'>
@@ -133,8 +141,10 @@ class TopNav extends Component {
           </TabContainer>
         </div>
         <div className='dropdown'>
-            <DropdownNotification />
-          </div>
+        {
+          showDropdown()
+        }
+        </div>
       </nav>
     )
   }

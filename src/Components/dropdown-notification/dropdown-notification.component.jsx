@@ -14,7 +14,10 @@ const DropdownNotification = () => (
       <div className='notification-container'>
         <ProfilePic/>
         <div className='notification'>
-          <div className='body'>Someone reacted on your post</div>
+          <div className='body'>
+            <sapn className='link'>Your Crush</sapn>
+            visited you profile 3 times today
+          </div>
           <span className='time'>2 hours ago</span>
         </div>
       </div>

@@ -13,8 +13,14 @@
     padding: 10px 0;
 
     .menu {
-      display: inline-block;
+      display: flex;
       padding: 10px;
+      border-radius: 50%;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $bg-primary-color;
+      }
     }
   }
 
@@ -27,11 +33,29 @@
     .notification-container {
       display: flex;
       margin-bottom: 10px;
-      background-color: $bg-primary-color;
+      border-radius: 10px;
+
+      &:hover {
+        background-color: $bg-primary-color;
+        cursor: pointer;
+      }
 
       .notification {
         @include fc-h-ss();
         flex-direction: column;
+
+        .body {
+          text-align: left;
+
+          .link {
+            font-weight: bold;
+            margin-right: 5px;
+          }
+        }
+
+        .time {
+          color: $bg-primary-blue;
+        }
       }
     }
   }

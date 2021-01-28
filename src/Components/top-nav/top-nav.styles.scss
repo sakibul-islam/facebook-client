@@ -90,25 +90,15 @@
       height: 30px;
     }
 
-    .hover-button {
+    .profile {
       @include v-center();
       line-height: 1;
       padding: 5px;
       border-radius: 20px;
       background: #F0F2F5;
 
-      // .profile-pic {
-      //   margin-right: 5px;
-      // }
       &:hover {
       background: #d9dadb;
-      }
-
-      .icon-container {
-        .badge {
-          top: -5px;
-          left: 28px;
-        }
       }
 
       &.active {
@@ -116,22 +106,33 @@
       }
     }
     
-    .icon-container {
+    .hover-button {
+      padding: 0;
       margin: 0 5px;
-      height: 40px;
-      min-width: 40px;
-      border-radius: 20px;
-      cursor: pointer;
-      background-color: $bg-primary-color;
-      
+      border-radius: 50%;
+
+      .icon-container {
+        height: 40px;
+        min-width: 40px;
+        border-radius: 20px;
+        cursor: pointer;
+        background-color: $bg-primary-color;
+
+        &:hover {
+        background-color: $bg-secondary-color;
+        }
+      }
       .tooltip {
-        top: 130%;
+          top: 130%;
       }
 
-      &:hover {
-      background-color: $bg-secondary-color;
+      &.active {
+        .icon-container {
+          background-color: #1876f241;
+        }
       }
     }
+    
   }
   
 }

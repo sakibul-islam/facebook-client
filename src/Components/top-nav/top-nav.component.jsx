@@ -11,8 +11,6 @@ import { ReactComponent as Messenger} from './icons/Messenger.svg';
 import { ReactComponent as Bell} from './icons/Bell.svg';
 import { ReactComponent as CaretDown} from './icons/caret-down.svg';
 
-import IconContainer from './icon-container/icon-container.component';
-import HoverButton from '../hoverButton/hover-button.component';
 import CurrentUsersProfilePic from '../current-user/current-users-profile-pic/current-users-profile-pic.component';
 import { withRouter } from 'react-router-dom';
 import { Component } from 'react';
@@ -81,26 +79,58 @@ class TopNav extends Component {
           </TabContainer>
         </div>
         <div className='right'>
-          <HoverButton
-            className={`hover-button ${active === 'profile'? 'active' : ''}`}
+          <div
+            className={`profile ${active === 'profile'? 'active' : ''}`}
             onClick={() => {
               history.push(`/profile`);
               this.setState({active: 'profile'})
             }} >
             <CurrentUsersProfilePic/>
-          </HoverButton>
-          <IconContainer tooltip='Create'>
+          </div>
+
+          <TabContainer
+            tabName='Create'
+            routeName='/'
+            bordered
+            active={this.state.active} 
+            handleClick={this.setActiveTab}
+          >
             <Plus/>
-          </IconContainer>
-          <IconContainer quantity='5' tooltip='Messenger'>
+          </TabContainer>
+          
+          <TabContainer
+            tabName='Messenger'
+            routeName='/'
+            bordered
+            quantity='1'
+            active={this.state.active} 
+            handleClick={this.setActiveTab}
+          >
             <Messenger/>
-          </IconContainer>
-          <IconContainer tooltip='Notifications'>
+          </TabContainer>
+
+          <TabContainer
+            tabName='Notifications'
+            routeName='/'
+            bordered
+            quantity='5'
+            active={this.state.active} 
+            handleClick={this.setActiveTab}
+          >
             <Bell/>
-          </IconContainer>
-          <IconContainer tooltip='Login' onClick={() => history.push('/login')}>
+          </TabContainer>
+
+          <TabContainer
+            tabName='Menu'
+            routeName='/'
+            bordered
+            active={this.state.active} 
+            handleClick={this.setActiveTab}
+            onClick={() => history.push('/login')}
+          >
             <CaretDown/>
-          </IconContainer>
+          </TabContainer>
+
         </div>
       </nav>
     )

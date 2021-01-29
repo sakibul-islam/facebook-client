@@ -80,6 +80,11 @@ export const LogOutIcon = styled.i`
   background-position: 0 399px;
 `;
 
+export const DarkModeIcon = styled.i`
+  ${icons7Styles}
+  background-position: 0 294px;
+`;
+
 export const SignInIcon = styled.i`
   ${icons7Styles}
   background-position: 0 168px;

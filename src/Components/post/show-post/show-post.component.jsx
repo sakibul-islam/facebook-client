@@ -10,12 +10,15 @@ import Name from '../../name/name.component';
 import { LikeIcon, LikedIcon, CommentIcon, ShareIcon, ThreeDotsIcon } from '../../icons/icons'
 import {ReactComponent as LikeSvg } from '../../icons/Like.svg';
 import { Component } from 'react';
+import { connect } from 'react-redux';
+import { gunTrigger, gunTriggeredDone } from '../../../redux/gun/gun.actions';
 
 
 class ShowPost extends Component {
   state = {
-    liked: false,
-    totalLike: 7
+    reacted: false,
+    totalLike: 7,
+    gunAnimation: ''
   }
 
   // toggleLike = () => {
@@ -26,19 +29,37 @@ class ShowPost extends Component {
   // }
 
   toggleLike = () => {
+    const {trigger, gunMode} = this.props.gun;
+    const {reacted} = this.state;
+    const reactToAdd = gunMode &&  reacted ? trigger : (
+      reacted ? -1 : 1
+    )
+    if(gunMode) {
+      this.setGunAnimation();
+      this.props.gunTrigger();
+      setTimeout(() => this.props.gunTriggeredDone(), 200)
+    }
+    
     this.setState((prevState) => {
       return  ({
-        liked: !prevState.liked,
-        totalLike: !prevState.liked ? prevState.totalLike + 1 : prevState.totalLike - 1
+        reacted: gunMode? true : !prevState.reacted,
+        totalLike: prevState.totalLike + reactToAdd
       })
     });
   }
 
-  
+  setGunAnimation = () => {
+    this.setState({gunAnimation: 'gunAnimation'})
+    setTimeout(() => {
+      this.setState({gunAnimation: ''})
+    }, 500)
+  }
+
   render() {
-    const { post } = this.props
+    const { post, gun } = this.props
     const {displayName, userName, photoURL} = post.user;
     const {body, comments } = post;
+    const reactBtnClass = `hover-button ${gun.gunMode ? 'gun-mode': ''} ${this.state.gunAnimation}`;
     return (
       <div className='post'>
         <Card>
@@ -47,7 +68,7 @@ class ShowPost extends Component {
               <ProfilePic userName={userName} photoURL={photoURL} />
               <div className='details'>
                 <span className='names'>
-                  <Name displayName={displayName || 'Display Name'} userName={userName || 'user123'} /> 
+                  <Name displayName={displayName || 'Display Name'} userName={userName || 'user123'} />
                   {/* ❯ <span className='group-name'>Group's Name</span> */}
                 </span>
                 <span className='time'>{post.time}</span>
@@ -76,11 +97,13 @@ class ShowPost extends Component {
             </div>
           </div>
           <div className='actions'>
-            <HoverButton onClick={this.toggleLike} >
+            <HoverButton 
+              onClick={this.toggleLike} 
+              className={reactBtnClass}>
               <div className='icon-container'>
                 {
-                  this.state.liked 
-                  ? <LikedIcon className='icon active'/> 
+                  this.state.reacted
+                  ? <LikedIcon className={`icon reacted`}/> 
                   : <LikeIcon className='icon'/>
                 }
               </div>
@@ -111,4 +134,12 @@ class ShowPost extends Component {
   
 }
 
-export default ShowPost;
+const mapStatetoProps = ({gun}) => ({
+  gun
+})
+const mapDispatchToProps = dispatch => ({
+  gunTrigger: () => dispatch(gunTrigger()) ,
+  gunTriggeredDone: () => dispatch(gunTriggeredDone())
+})
+
+export default connect(mapStatetoProps, mapDispatchToProps)(ShowPost);

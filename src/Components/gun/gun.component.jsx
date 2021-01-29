@@ -2,15 +2,16 @@ import { connect } from 'react-redux';
 import './gun.styles.scss';
 import gunPng from './gun1.png';
 
-const Gun = ({gun}) => {
-  console.log(gun)
-  return gun.gunMode 
-  ? (
-    <div className='gun-container'>
+const Gun = ({gun: {gunInAnimation, triggered, gunOutAnimation}}) => {
+  const gunIn = gunInAnimation ? 'gun-in': '';
+  const trigger = triggered ? 'triggered': '';
+  const gunOut = gunOutAnimation ? 'gun-out': '';
+  return (
+    <div className={`gun ${gunIn} ${trigger} ${gunOut}`} >
       <img src={gunPng} alt=''/>
-    </div> 
-  ) : null
-}
+    </div>  
+  )};
+  
 const mapStatetoProps = ({gun}) => ({
   gun
 })

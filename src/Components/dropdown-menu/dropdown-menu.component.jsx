@@ -6,62 +6,104 @@ import IconContainer from "../top-nav/icon-container/icon-container.component";
 import { connect } from "react-redux";
 
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
-import { LogOutIcon, SignInIcon } from "../icons/icons";
+import { DarkModeIcon, LogOutIcon, SignInIcon } from "../icons/icons";
 
-import { toggleGunMode } from "../../redux/gun/gun.actions";
+import { addGunInAnimation, addGunOutAnimation, removeGunInAnimation, removeGunOutAnimation, toggleGunMode } from "../../redux/gun/gun.actions";
+import { Component } from "react";
 
-const DropdownMenu = ({user, toggleGunMode}) => (
-  <div className='dropdown-menu'>
-    {
-      user.displayName ? (
-      <div className='item profile'>
-        <CurrentUsersProfilePic />
-        <div className='other'>
-          <CurrentUsersName className='name'/>
-          <span className='message'>See you profile</span>
-        </div>
-      </div>
-      ) : (
-        <div className='item signin' onClick={() => signInWithGoogle()}>
-          <IconContainer>
-            <SignInIcon />
-          </IconContainer>
-          <div className='other'>
-            <name className='name'>Sign In With Google</name>
-            <span className='message'>Get Free Verified Account</span>
-          </div>
-        </div>
-      )
+class DropdownMenu extends Component {
+  
+  handleGunModeToggle = () => {
+    const {gunMode, toggleGunMode, addGunInAnimation, removeGunInAnimation, addGunOutAnimation, removeGunOutAnimation } = this.props;
+    
+    if(!gunMode) {
+      addGunInAnimation();
+      toggleGunMode();
+      setTimeout(() => removeGunInAnimation(), 300);
+    } else {
+      addGunOutAnimation();
+      setTimeout(() => {
+        removeGunOutAnimation();
+        toggleGunMode();  
+      }, 200);
     }
     
-    <hr/>
+  }
 
-    <div className='item' onClick={() => toggleGunMode()}>
-      <div className='fireMode' >
-        Toggle Fire Mode
-      </div>
-    </div>
+  render() {
+    const {user} = this.props;
+    return (
+      <div className='dropdown-menu'>
+        {
+          user.displayName ? (
+          <div className='item profile'>
+            <CurrentUsersProfilePic />
+            <div className='other'>
+              <CurrentUsersName className='name'/>
+              <span className='message'>See you profile</span>
+            </div>
+          </div>
+          ) : (
+            <div className='item signin' onClick={() => signInWithGoogle()}>
+              <IconContainer>
+                <SignInIcon />
+              </IconContainer>
+              <div className='other'>
+                <span className='name'>Sign In With Google</span>
+                <span className='message'>Get Free Verified Account</span>
+              </div>
+            </div>
+          )
+        }
+        
+        <hr/>
 
-    {
-      user.displayName ? (
-        <div className='item' onClick={() => auth.signOut()} >
+        <div className='item' onClick={this.handleGunModeToggle}>
           <IconContainer>
-            <LogOutIcon />
+            <DarkModeIcon/>
           </IconContainer>
           <div className='other'>
-            <name>Log Out</name>
+            <span className='name'>Gun Mode</span>
+            <span className='message'></span>
           </div>
         </div>
-      ) : null
-    }
-  </div>
-);
+        <div className='item' >
+          <IconContainer>
+            <DarkModeIcon/>
+          </IconContainer>
+          <div className='other'>
+            <span className='name'>Dark Mode</span>
+            <span className='message'>For Eye Care</span>
+          </div>
+        </div>
 
-const mapStateToProps = ({user}) => ({
-  user
+        {
+          user.displayName ? (
+            <div className='item' onClick={() => auth.signOut()} >
+              <IconContainer>
+                <LogOutIcon />
+              </IconContainer>
+              <div className='other'>
+                <span className='name'>Log Out</span>
+              </div>
+            </div>
+          ) : null
+        }
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = ({user, gun}) => ({
+  user, 
+  gunMode: gun.gunMode
 })
 const mapDispatchToProps = (dispatch) => ({
-  toggleGunMode: () => dispatch(toggleGunMode())
+  toggleGunMode: () => dispatch(toggleGunMode()),
+  addGunInAnimation: () => dispatch(addGunInAnimation()),
+  removeGunInAnimation: () => dispatch(removeGunInAnimation()),
+  addGunOutAnimation: () => dispatch(addGunOutAnimation()),
+  removeGunOutAnimation: () => dispatch(removeGunOutAnimation())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DropdownMenu);

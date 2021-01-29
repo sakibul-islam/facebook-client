@@ -3,8 +3,9 @@ import ShowPost from '../post/show-post/show-post.component';
 import './contents.styles.scss';
 import posts from '../../posts';
 import Gun from '../gun/gun.component';
+import { connect } from 'react-redux';
 
-const Contents = () => {
+const Contents = ({gun}) => {
 
   return (
     <div className='contents'>
@@ -14,9 +15,13 @@ const Contents = () => {
           <ShowPost post={post} key={post.id} />
         ))
       }
-      <Gun />
+      {gun.gunMode ? <Gun/> : ''}
     </div>
   )
 }
 
-export default Contents;
+const mapStatetoProps = ({gun}) => ({
+  gun
+})
+
+export default connect(mapStatetoProps)(Contents);

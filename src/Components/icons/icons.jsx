@@ -3,6 +3,7 @@ import icons2 from './icons2.png';
 import icons1 from './icons1.png';
 import icons3 from './icons3.png';
 import icons7 from './icons7.png';
+import gunIcon from './pistol.png';
 
 const icons2Styles = css`
   width: 18px;
@@ -36,6 +37,7 @@ export const LikeIcon = styled.i`
 export const LikedIcon = styled.i`
   ${icons2Styles}
   background-position: 0 -153px;
+  filter: invert(0.39) sepia(0.57) saturate(2) saturate(2) saturate(2) saturate(2) saturate(2) saturate(1.4775) hue-rotate(202deg) brightness(0.97) contrast(0.96);
 `;
 
 export const CommentIcon = styled.i`
@@ -88,4 +90,12 @@ export const DarkModeIcon = styled.i`
 export const SignInIcon = styled.i`
   ${icons7Styles}
   background-position: 0 168px;
+`;
+
+
+export const GunIcon = styled.i`
+  width: 20px;
+  height: 20px;
+  background-image: url(${gunIcon});
+  background-size: cover;
 `;

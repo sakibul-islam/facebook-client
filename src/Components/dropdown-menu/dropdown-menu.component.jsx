@@ -6,10 +6,12 @@ import IconContainer from "../top-nav/icon-container/icon-container.component";
 import { connect } from "react-redux";
 
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
-import { DarkModeIcon, LogOutIcon, SignInIcon } from "../icons/icons";
+import { DarkModeIcon, GunIcon, LogOutIcon, SignInIcon } from "../icons/icons";
 
 import { addGunInAnimation, addGunOutAnimation, removeGunInAnimation, removeGunOutAnimation, toggleGunMode } from "../../redux/gun/gun.actions";
 import { Component } from "react";
+import { OhNo } from "../gifs/gif";
+
 
 class DropdownMenu extends Component {
   
@@ -31,7 +33,7 @@ class DropdownMenu extends Component {
   }
 
   render() {
-    const {user} = this.props;
+    const {user, gunMode } = this.props;
     return (
       <div className='dropdown-menu'>
         {
@@ -58,14 +60,18 @@ class DropdownMenu extends Component {
         
         <hr/>
 
-        <div className='item' onClick={this.handleGunModeToggle}>
+        <div className={`item ${gunMode ? "on" : ''}`} onClick={this.handleGunModeToggle}>
           <IconContainer>
-            <DarkModeIcon/>
+            <GunIcon/>
           </IconContainer>
           <div className='other'>
-            <span className='name'>Gun Mode</span>
+            <span className='name'>{gunMode ? "Turn Off Fire" : "Turn On Fire"}</span>
             <span className='message'></span>
           </div>
+        </div>
+
+        <div className='item'>
+          <OhNo/>
         </div>
         <div className='item' >
           <IconContainer>

@@ -56,6 +56,7 @@ class ShowPost extends Component {
   }
 
   render() {
+    const {reacted} = this.state
     const { post, gun } = this.props
     const {displayName, userName, photoURL} = post.user;
     const {body, comments } = post;
@@ -102,19 +103,23 @@ class ShowPost extends Component {
               className={reactBtnClass}>
               <div className='icon-container'>
                 {
-                  this.state.reacted
+                  reacted
                   ? <LikedIcon className={`icon reacted`}/> 
                   : <LikeIcon className='icon'/>
                 }
               </div>
-              <span className='icnos-name'> Like</span>
+              <span className={`${reacted ? 'liked': ''}`}> Like</span>
             </HoverButton>
             <HoverButton>
-              <CommentIcon className='icon' />
+              <div className='icon-container'>
+                <CommentIcon className='icon' />
+              </div>
               <span>Comment</span>
             </HoverButton>
             <HoverButton>
-              <ShareIcon className='icon' />
+              <div className='icon-container'>
+                <ShareIcon className='icon' />
+              </div>
               <span>Share</span>
             </HoverButton>
           </div>

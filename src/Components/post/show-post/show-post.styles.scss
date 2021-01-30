@@ -89,6 +89,7 @@
     border: 1px solid #E5E5E5;
     border-width: 1px 0;
     line-height: 1;
+    font-weight: 400;
 
     .hover-button {
       width: 33%;
@@ -101,6 +102,9 @@
           margin-right: 5px;
         }
         
+      }
+      .liked {
+        color: $active-icon;
       }
 
       &.gun-mode.gunAnimation {

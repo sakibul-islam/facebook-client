@@ -23,6 +23,12 @@
       border-radius: 50%;
       background-color: $bg-primary-color;
     }
+
+    &.on {
+      .icon-container {
+        background-color: $active-icon;
+      }
+    }
     .other {
       @include fc-h-fs();
       font-family: 'Segoe UI Semibold', "Segoe UI Historic", Helvetica, Arial, sans-serif;

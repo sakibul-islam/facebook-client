@@ -14,6 +14,10 @@ import { OhNo } from "../gifs/gif";
 
 
 class DropdownMenu extends Component {
+
+  state = {
+    ohNo: false
+  }
   
   handleGunModeToggle = () => {
     const {gunMode, toggleGunMode, addGunInAnimation, removeGunInAnimation, addGunOutAnimation, removeGunOutAnimation } = this.props;
@@ -21,7 +25,9 @@ class DropdownMenu extends Component {
     if(!gunMode) {
       addGunInAnimation();
       toggleGunMode();
+      this.setState({ohNo: true})
       setTimeout(() => removeGunInAnimation(), 300);
+      setTimeout(() => this.setState({ohNo: false}), 2000);
     } else {
       addGunOutAnimation();
       setTimeout(() => {
@@ -34,6 +40,8 @@ class DropdownMenu extends Component {
 
   render() {
     const {user, gunMode } = this.props;
+    const {ohNo} = this.state;
+
     return (
       <div className='dropdown-menu'>
         {
@@ -70,9 +78,14 @@ class DropdownMenu extends Component {
           </div>
         </div>
 
-        <div className='item'>
-          <OhNo/>
-        </div>
+        {
+          ohNo ? (
+          <div className='item oh-no'>
+            <OhNo/>
+          </div>
+          ) : null
+        }
+        
         <div className='item' >
           <IconContainer>
             <DarkModeIcon/>

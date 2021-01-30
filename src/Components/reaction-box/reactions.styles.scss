@@ -1,0 +1,21 @@
+@import '../../colors.scss';
+
+.reaction-box {
+  position: absolute;
+  display: flex;
+  background-color: white;
+  box-shadow: $shadow-primary-2;
+  padding: 5px 10px;
+  border-radius: 25px;
+
+  .reaction {
+    width: 40px;
+    margin: 0 2px;
+    
+    &:hover {
+      transform: scale(1.3);
+      z-index: 1;
+    }
+  }
+
+}

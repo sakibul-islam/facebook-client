@@ -7,33 +7,43 @@ import HoverButton from '../../hoverButton/hover-button.component';
 import WriteComment from '../../comment/write-comment/write-comment.component';
 import Comment from '../../comment/show-comment/show-comment.componet';
 import Name from '../../name/name.component';
-import { LikeIcon, LikedIcon, CommentIcon, ShareIcon, ThreeDotsIcon } from '../../icons/icons'
+import { CommentIcon, ShareIcon, ThreeDotsIcon } from '../../icons/icons'
 import {ReactComponent as LikeSvg } from '../../icons/Like.svg';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { gunTrigger, gunTriggeredDone } from '../../../redux/gun/gun.actions';
 
+import ReactionBox, { DisplayReaction } from '../../reaction-box/reaction-box';
 
 class ShowPost extends Component {
   state = {
-    reacted: false,
-    totalLike: 7,
-    gunAnimation: ''
+    reacted: '',
+    totalReact: 7,
+    reactionBox: false
   }
 
-  // toggleLike = () => {
-  //   this.setState((prevState, nextState) => ({
-  //     liked: !prevState.liked,
-  //     totalLike: nextState.liked ? prevState.totalLike + 1 : prevState.totalLike - 1
-  //   }));
-  // }
-
-  toggleLike = () => {
+  reactToAdd = (reactName) => {
     const {trigger, gunMode} = this.props.gun;
     const {reacted} = this.state;
-    const reactToAdd = gunMode &&  reacted ? trigger : (
-      reacted ? -1 : 1
-    )
+
+    if(gunMode) {
+      return trigger;
+    } else if (reacted === reactName) {
+      return -1;
+    } else if(!reacted) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  toggleLike = (reactName) => {
+    const {gunMode} = this.props.gun;
+    const {reacted} = this.state;
+    const reactToAdd = this.reactToAdd(reactName)
+
+    console.log(reactToAdd)
+
     if(gunMode) {
       this.setGunAnimation();
       this.props.gunTrigger();
@@ -42,8 +52,8 @@ class ShowPost extends Component {
     
     this.setState((prevState) => {
       return  ({
-        reacted: gunMode? true : !prevState.reacted,
-        totalLike: prevState.totalLike + reactToAdd
+        reacted: gunMode? reactName : (reacted === reactName ? '' : reactName),
+        totalReact: prevState.totalReact + reactToAdd
       })
     });
   }
@@ -55,12 +65,25 @@ class ShowPost extends Component {
     }, 500)
   }
 
+  // showReactionBox = (e) => {
+  //   console.log(e)
+  //   this.setState({reactionBox: true})
+  // }
+  // hideReactionBox = (e) => {
+  //   console.log(e)
+  //   setTimeout(() => {
+  //   this.setState({reactionBox: false})
+  //   }, 500)
+  // }
+
+
   render() {
-    const {reacted} = this.state
+    const {reacted, totalReact} = this.state
     const { post, gun } = this.props
     const {displayName, userName, photoURL} = post.user;
     const {body, comments } = post;
-    const reactBtnClass = `hover-button ${gun.gunMode ? 'gun-mode': ''} ${this.state.gunAnimation}`;
+    const reactBtnClasses = `hover-button ${gun.gunMode ? 'gun-mode': ''} ${this.state.gunAnimation}`;
+
     return (
       <div className='post'>
         <Card>
@@ -84,7 +107,7 @@ class ShowPost extends Component {
           <div className='quantities'>
             <div className='left'>
               <LikeSvg className='icon'/>
-              <span className='quantity link'>{this.state.totalLike}</span>
+              <span className='quantity link'>{totalReact}</span>
             </div>
             <div className='right'>
               <div className='comments link'>
@@ -98,17 +121,13 @@ class ShowPost extends Component {
             </div>
           </div>
           <div className='actions'>
-            <HoverButton 
-              onClick={this.toggleLike} 
-              className={reactBtnClass}>
-              <div className='icon-container'>
-                {
-                  reacted
-                  ? <LikedIcon className={`icon reacted`}/> 
-                  : <LikeIcon className='icon'/>
-                }
-              </div>
-              <span className={`${reacted ? 'liked': ''}`}> Like</span>
+            <HoverButton
+              // onMouseOverCapture={this.showReactionBox}
+              // onMouseOut={this.hideReactionBox}
+              onClick={() => this.toggleLike('like')} 
+              className={reactBtnClasses}>
+              <DisplayReaction reacted={reacted} />
+              <ReactionBox toggleReact={this.toggleLike}/>
             </HoverButton>
             <HoverButton>
               <div className='icon-container'>

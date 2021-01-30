@@ -92,20 +92,20 @@
     font-weight: 400;
 
     .hover-button {
+      position: relative;
       width: 33%;
       height: 32px;
       border-radius: 5px;
       @include v-center();
+      font-family: 'Segoe UI Semibold';
 
-      .icon-container {
-        .icon {
-          margin-right: 5px;
-        }
-        
+      .icon {
+        margin-right: 5px;
+        width: 18px;
       }
-      .liked {
-        color: $active-icon;
-      }
+      .like {color: rgb(32 120 244);} 
+      .haha, .wow, .care {color: rgb(247 177 37);} 
+      .love {color: rgb(243 62 88);}
 
       &.gun-mode.gunAnimation {
         .icon {
@@ -113,6 +113,27 @@
         }
         animation: jello .4s;
       }
+
+      .reaction-box {
+        bottom: 110%;
+        display: none;
+      }
+
+      &:hover {
+        .reaction-box {
+          display: flex;
+        }
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: 100%;
+          height: 10px;
+          width: 100%;
+        }
+      }
+
+      
+
     }
   }
 

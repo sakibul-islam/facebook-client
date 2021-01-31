@@ -65,12 +65,26 @@
 
     .left {
       @include v-center();
-
-      .icon {
-        width: 18px;
+      
+      .reactions {
+        position: relative;
+        display: flex;
         height: 18px;
-        margin-right: 5px;
+        
+        .icon {
+          width: 18px;
+          height: 18px;
+          margin-left: -4px;
+          background: white;
+          padding: 1px;
+          border-radius: 50%;
+        }
+
+        &:first-child {
+          z-index: 1;
+        }
       }
+
     }
 
     .right {

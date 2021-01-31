@@ -8,7 +8,6 @@ import WriteComment from '../../comment/write-comment/write-comment.component';
 import Comment from '../../comment/show-comment/show-comment.componet';
 import Name from '../../name/name.component';
 import { CommentIcon, ShareIcon, ThreeDotsIcon } from '../../icons/icons'
-import {ReactComponent as LikeSvg } from '../../icons/Like.svg';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { gunTrigger, gunTriggeredDone } from '../../../redux/gun/gun.actions';

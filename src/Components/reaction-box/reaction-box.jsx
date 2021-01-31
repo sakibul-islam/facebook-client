@@ -37,20 +37,38 @@ class ReactionBox extends Component {
 
 export default ReactionBox;
 
-const returnReactionIcon = (reaction) => {
+const zIndexCalculation = (i) => {
+  switch(i) {
+    case 0:
+      return 2;
+    case 1:
+      return 1;
+    case 2:
+      return 0;
+    default:
+      return 0;
+  }
+}
+
+const returnReactionIcon = (reaction, i) => {
+  const zIndex = zIndexCalculation(i);
+  const style = {
+    zIndex,
+  }
+
   switch(reaction) {
     case 'like':
-      return <Like className='icon like'/>
+      return <Like className='icon like' style={style}/>
     case 'haha':
-      return <Haha className='icon haha'/>
+      return <Haha className='icon haha' style={style}/>
     case 'love':
-      return <Love className='icon love'/>
+      return <Love className='icon love' style={style}/>
     case 'wow':
-      return <Wow className='icon wow'/>
+      return <Wow className='icon wow' style={style}/>
     case 'care':
-      return <Care className='icon care'/>
+      return <Care className='icon care' style={style}/>
     case 'sad':
-      return <Sad className='icon sad'/>
+      return <Sad className='icon sad' style={style}/>
     default:
       return <LikeIcon className='icon like'/>
   }
@@ -111,5 +129,8 @@ export const DisplayReactionWithName = ({reacted}) => {
 }
 
 export const DisplaySortedReactions = ({reactionsArr}) => (
-  reactionsArr.map((reaction, i) => returnReactionIcon(reaction))
+  <div className='reactions'>
+    {reactionsArr.map((reaction, i) => returnReactionIcon(reaction, i))}
+  </div>
+  
 )

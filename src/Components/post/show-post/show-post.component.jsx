@@ -89,7 +89,8 @@ class ShowPost extends Component {
   }
 
   setGunAnimation = () => {
-    this.setState({gunAnimation: 'gunAnimation'})
+    this.setState({gunAnimation: 'gunAnimation'});
+    
     setTimeout(() => {
       this.setState({gunAnimation: ''})
     }, 500)

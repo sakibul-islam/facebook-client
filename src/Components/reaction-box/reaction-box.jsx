@@ -30,6 +30,12 @@ class ReactionBox extends Component {
         <IconContainer onClick={(e) => this.handleReact(e, 'wow')}>
           <Wow className='reaction'/>
         </IconContainer>
+        <IconContainer onClick={(e) => this.handleReact(e, 'care')}>
+          <Care className='reaction'/>
+        </IconContainer>
+        <IconContainer onClick={(e) => this.handleReact(e, 'sad')}>
+          <Sad className='reaction'/>
+        </IconContainer>
       </div>
     );
   }
@@ -58,19 +64,19 @@ const returnReactionIcon = (reaction, i) => {
 
   switch(reaction) {
     case 'like':
-      return <Like className='icon like' style={style}/>
+      return <Like key={i} className='icon like' style={style}/>
     case 'haha':
-      return <Haha className='icon haha' style={style}/>
+      return <Haha key={i} className='icon haha' style={style}/>
     case 'love':
-      return <Love className='icon love' style={style}/>
+      return <Love key={i} className='icon love' style={style}/>
     case 'wow':
-      return <Wow className='icon wow' style={style}/>
+      return <Wow key={i} className='icon wow' style={style}/>
     case 'care':
-      return <Care className='icon care' style={style}/>
+      return <Care key={i} className='icon care' style={style}/>
     case 'sad':
-      return <Sad className='icon sad' style={style}/>
+      return <Sad key={i} className='icon sad' style={style}/>
     default:
-      return <LikeIcon className='icon like'/>
+      return <LikeIcon key={i} className='icon like'/>
   }
 }
 

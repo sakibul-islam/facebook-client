@@ -12,7 +12,7 @@
       <stop offset='100%'
         stop-color='#F69B30' />
     </linearGradient>
-    <linearGradient id='d'
+    <linearGradient id='wow-d'
       x1='50%'
       x2='50%'
       y1='0%'
@@ -111,7 +111,7 @@
     <use fill='black'
       filter='url(#c)'
       xlink:href='#b' />
-    <path fill='url(#d)'
+    <path fill='url(#wow-d)'
       d='M5.643 10.888C5.485 12.733 6.369 14 8 14c1.63 0 2.515-1.267 2.357-3.112C10.2 9.042 9.242 8 8 8c-1.242 0-2.2 1.042-2.357 2.888' />
     <use fill='url(#e)'
       xlink:href='#f' />

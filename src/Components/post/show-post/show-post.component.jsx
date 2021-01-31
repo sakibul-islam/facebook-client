@@ -27,7 +27,7 @@ class ShowPost extends Component {
     reactionBox: false
   }
 
-  reactToAdd = (reactName) => {
+  reactToAddFn = (reactName) => {
     const {trigger, gunMode} = this.props.gun;
     const {reacted} = this.state;
 
@@ -46,7 +46,6 @@ class ShowPost extends Component {
     const {like, haha, love, wow, care, sad} = this.state;
     const reactionObj = {like, haha, love, wow, care, sad};
     const reactionArr = Object.keys(reactionObj);
-    console.log(reactionObj)
     let done = false;
     while (!done) {
       done = true;
@@ -63,11 +62,27 @@ class ShowPost extends Component {
     return reactionArr.filter((reaction, i) => i < 3 && reactionObj[reaction] > 0);
   }
 
+  reactionIncressingQueue = async (quantity) => {
+    let i = 0;
+    while (i < quantity) {
+      await new Promise((resolve) => setTimeout(() => {
+        resolve('done')
+      }, 80))
+      this.setState(prevState => ({totalReact: prevState.totalReact + 1}))
+      i++;
+    }
+  }
 
-  toggleLike = (reactName) => {
+  toggleReact = (reactName) => {
     const {gunMode} = this.props.gun;
     const {reacted} = this.state;
-    const reactToAdd = this.reactToAdd(reactName)
+    const reactToAdd = this.reactToAddFn(reactName)
+
+    if(reactToAdd > 1 ) {
+      this.reactionIncressingQueue(reactToAdd)
+    } else {
+      this.setState(prevState => ({totalReact: prevState.totalReact + reactToAdd}))
+    }
 
     this.setState((prevState) => {
       this.setState({[reactName]: prevState[reactName] + reactToAdd })
@@ -76,16 +91,15 @@ class ShowPost extends Component {
     if(gunMode) {
       this.setGunAnimation();
       this.props.gunTrigger();
-      setTimeout(() => this.props.gunTriggeredDone(), 200)
+      setTimeout(() => this.props.gunTriggeredDone(), 500)
     }
     
     this.setState((prevState) => {
       return  ({
         reacted: gunMode? reactName : (reacted === reactName ? '' : reactName),
-        totalReact: prevState.totalReact + reactToAdd
+        // totalReact: reactToAdd > 1 ? this.reactionIncressingQueue(reactToAdd): prevState.totalReact + reactToAdd
       })
     });
-    console.log(this.reactionsSort())
   }
 
   setGunAnimation = () => {
@@ -97,7 +111,7 @@ class ShowPost extends Component {
   }
 
   render() {
-    const {reacted, totalReact} = this.state
+    const {reacted, totalReact, reactionBox} = this.state
     const { post, gun } = this.props
     const {displayName, userName, photoURL} = post.user;
     const {body, comments } = post;
@@ -143,10 +157,14 @@ class ShowPost extends Component {
           </div>
           <div className='actions'>
             <HoverButton
-              onClick={() => this.toggleLike('like')} 
+              onMouseOver={() => this.setState({reactionBox: true})}
+              onClick={() => this.toggleReact('like')} 
               className={reactBtnClasses}>
               <DisplayReactionWithName reacted={reacted} />
-              <ReactionBox toggleReact={this.toggleLike}/>
+              {
+                reactionBox ? <ReactionBox toggleReact={this.toggleReact}/> : null
+              }
+              
             </HoverButton>
             <HoverButton>
               <div className='icon-container'>

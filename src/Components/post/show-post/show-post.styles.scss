@@ -123,14 +123,14 @@
 
       &.gun-mode.gunAnimation {
         .icon {
-          animation: fadeInBottomRight .2s;
+          animation: reactBullet .05s infinite;
         }
-        animation: jello .4s;
+        animation: gunShake .05s infinite;
       }
 
       .reaction-box {
         left: 40%;
-        bottom: 110%;
+        bottom: 105%;
         display: none;
       }
 
@@ -156,10 +156,10 @@
     }
   }
 
-  @keyframes fadeInBottomRight {
+  @keyframes reactBullet {
     from {
       opacity: 0;
-      transform: translate3d(200%, 200%, 0) scale(2);
+      transform: translate3d(300%, 500%, 0) scale(2);
     }
     to {
       opacity: 1;
@@ -167,7 +167,7 @@
     }
   }
   
-  @keyframes jello {
+  @keyframes gunShake {
     from,
     11.1%,
     to {

@@ -15,6 +15,16 @@ const Contents = ({gun}) => {
           <ShowPost post={post} key={post.id} />
         ))
       }
+      {
+        posts.map(post => (
+          <ShowPost post={post} key={post.id} />
+        ))
+      }
+      {
+        posts.map(post => (
+          <ShowPost post={post} key={post.id} />
+        ))
+      }
       {gun.gunMode ? <Gun/> : ''}
     </div>
   )

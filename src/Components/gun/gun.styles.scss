@@ -19,7 +19,7 @@
   }
 
   &.triggered {
-    animation: shakeGun .2s;
+    animation: shakeGun .2s infinite;
   }
 
   &.gun-out {

@@ -13,12 +13,18 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { gunTrigger, gunTriggeredDone } from '../../../redux/gun/gun.actions';
 
-import ReactionBox, { DisplayReaction } from '../../reaction-box/reaction-box';
+import ReactionBox, { DisplayReactionWithName, DisplaySortedReactions } from '../../reaction-box/reaction-box';
 
 class ShowPost extends Component {
   state = {
     reacted: '',
     totalReact: 7,
+    like: 7,
+    haha: 0,
+    love: 0,
+    wow: 0,
+    care: 0,
+    sad: 0,
     reactionBox: false
   }
 
@@ -37,12 +43,36 @@ class ShowPost extends Component {
     }
   }
 
+  reactionsSort = () => {
+    const {like, haha, love, wow, care, sad} = this.state;
+    const reactionObj = {like, haha, love, wow, care, sad};
+    const reactionArr = Object.keys(reactionObj);
+    console.log(reactionObj)
+    let done = false;
+    while (!done) {
+      done = true;
+      for (let i = 1; i < reactionArr.length; i += 1) {
+        if (reactionObj[reactionArr[i - 1]] < reactionObj[reactionArr[i]]) {
+          done = false;
+          let tmp = reactionArr[i - 1];
+          reactionArr[i - 1] = reactionArr[i];
+          reactionArr[i] = tmp;
+        }
+      }
+    }
+  
+    return reactionArr.filter((reaction, i) => i < 3 && reactionObj[reaction] > 0);
+  }
+
+
   toggleLike = (reactName) => {
     const {gunMode} = this.props.gun;
     const {reacted} = this.state;
     const reactToAdd = this.reactToAdd(reactName)
 
-    console.log(reactToAdd)
+    this.setState((prevState) => {
+      this.setState({[reactName]: prevState[reactName] + reactToAdd })
+    })
 
     if(gunMode) {
       this.setGunAnimation();
@@ -56,6 +86,7 @@ class ShowPost extends Component {
         totalReact: prevState.totalReact + reactToAdd
       })
     });
+    console.log(this.reactionsSort())
   }
 
   setGunAnimation = () => {
@@ -64,18 +95,6 @@ class ShowPost extends Component {
       this.setState({gunAnimation: ''})
     }, 500)
   }
-
-  // showReactionBox = (e) => {
-  //   console.log(e)
-  //   this.setState({reactionBox: true})
-  // }
-  // hideReactionBox = (e) => {
-  //   console.log(e)
-  //   setTimeout(() => {
-  //   this.setState({reactionBox: false})
-  //   }, 500)
-  // }
-
 
   render() {
     const {reacted, totalReact} = this.state
@@ -106,7 +125,9 @@ class ShowPost extends Component {
           {/* <img src={meme} alt=''/> */}
           <div className='quantities'>
             <div className='left'>
-              <LikeSvg className='icon'/>
+              {
+                <DisplaySortedReactions reactionsArr={this.reactionsSort()}/>
+              }
               <span className='quantity link'>{totalReact}</span>
             </div>
             <div className='right'>
@@ -122,11 +143,9 @@ class ShowPost extends Component {
           </div>
           <div className='actions'>
             <HoverButton
-              // onMouseOverCapture={this.showReactionBox}
-              // onMouseOut={this.hideReactionBox}
               onClick={() => this.toggleLike('like')} 
               className={reactBtnClasses}>
-              <DisplayReaction reacted={reacted} />
+              <DisplayReactionWithName reacted={reacted} />
               <ReactionBox toggleReact={this.toggleLike}/>
             </HoverButton>
             <HoverButton>

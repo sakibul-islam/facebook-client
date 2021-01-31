@@ -115,6 +115,7 @@
       }
 
       .reaction-box {
+        left: 40%;
         bottom: 110%;
         display: none;
       }
@@ -129,6 +130,10 @@
           bottom: 100%;
           height: 10px;
           width: 100%;
+        }
+
+        &.gun-mode {
+          cursor: crosshair;
         }
       }
 

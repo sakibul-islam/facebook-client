@@ -16,6 +16,9 @@
       transform: scale(1.3);
       z-index: 1;
     }
+    &:active {
+      transform: scale(1.5);
+    }
   }
 
 }

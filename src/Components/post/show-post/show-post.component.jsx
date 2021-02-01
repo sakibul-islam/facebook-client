@@ -13,6 +13,8 @@ import { connect } from 'react-redux';
 import { gunTrigger, gunTriggeredDone } from '../../../redux/gun/gun.actions';
 
 import ReactionBox, { DisplayReactionWithName, DisplaySortedReactions } from '../../reaction-box/reaction-box';
+import SortedReactions from '../../reaction-box/sorted-reactions';
+import ReactionWithName from '../../reaction-box/reaction-with-name';
 
 class ShowPost extends Component {
   state = {
@@ -140,7 +142,7 @@ class ShowPost extends Component {
           <div className='quantities'>
             <div className='left'>
               {
-                <DisplaySortedReactions reactionsArr={this.reactionsSort()}/>
+                <SortedReactions reactionsArr={this.reactionsSort()}/>
               }
               <span className='quantity link'>{totalReact}</span>
             </div>
@@ -160,7 +162,7 @@ class ShowPost extends Component {
               onMouseOver={() => this.setState({reactionBox: true})}
               onClick={() => this.toggleReact('like')} 
               className={reactBtnClasses}>
-              <DisplayReactionWithName reacted={reacted} />
+              <ReactionWithName reacted={reacted} />
               {
                 reactionBox ? <ReactionBox toggleReact={this.toggleReact}/> : null
               }

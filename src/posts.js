@@ -9,6 +9,15 @@ const posts = [
     time: '17 Jan 2012',
     title: "nesciunt quas odio",
     body: "Irure sit nostrud aliqua laboris eiusmod exercitation nostrud ex velit. Culpa proident culpa laboris sint labore commodo nulla duis ad non enim minim aute magna. Occaecat id dolor duis consequat proident non qui cillum reprehenderit est exercitation aliquip ex aliqua. Duis ad ullamco ullamco Lorem ea occaecat duis. Occaecat non excepteur id do aliqua laboris non adipisicing.",
+    reactions: {
+      like: 7,
+      haha: 3,
+      love: 2,
+      wow: 2,
+      care: 0,
+      sad: 0,
+      angry: 0
+    },
     comments: [
       {
         user: {
@@ -42,6 +51,15 @@ const posts = [
     time: '19 Jan 2012',
     title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
     body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+    reactions: {
+      like: 5,
+      haha: 3,
+      love: 9,
+      wow: 2,
+      care: 0,
+      sad: 0,
+      angry: 0
+    },
     comments: [
       {
         user: {

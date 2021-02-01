@@ -1,7 +1,7 @@
 import './reactions.styles.scss';
 import IconContainer from '../top-nav/icon-container/icon-container.component';
 import { Component } from 'react';
-import { CareReact, HahaReact, LoveReact, SadReact, WowReact } from './reactions';
+import { AngryReact, CareReact, HahaReact, LoveReact, SadReact, WowReact } from './reactions';
 
 class ReactionBox extends Component {
   
@@ -29,6 +29,9 @@ class ReactionBox extends Component {
         </IconContainer>
         <IconContainer onClick={(e) => this.handleReact(e, 'sad')}>
           <SadReact className='reaction'/>
+        </IconContainer>
+        <IconContainer onClick={(e) => this.handleReact(e, 'angry')}>
+          <AngryReact className='reaction'/>
         </IconContainer>
       </div>
     );

@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { CareReact, HahaReact, LoveReact, SadReact, WowReact, LikeReact } from "./reactions";
+import { CareReact, HahaReact, LoveReact, SadReact, WowReact, LikeReact, AngryReact } from "./reactions";
 
 class SortedReactions extends Component {
 
@@ -33,7 +33,9 @@ class SortedReactions extends Component {
       case 'care':
         return <CareReact key={i} className='icon care' style={style}/>
       case 'sad':
-        return <SadReact key={i} className='icon sad' style={style} alt=''/>
+        return <SadReact key={i} className='icon sad' style={style}/>
+      case 'angry':
+        return <AngryReact key={i} className='icon angry' style={style}/>
       default:
         return <LikeReact key={i} className='icon like' style={style}/>
     }

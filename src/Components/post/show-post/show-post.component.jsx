@@ -26,7 +26,16 @@ class ShowPost extends Component {
     wow: 0,
     care: 0,
     sad: 0,
+    angry: 0,
     reactionBox: false
+  }
+
+  componentDidMount() {
+    const {like, haha, love, wow, care, sad, angry} = this.props.post.reactions;
+    this.setState({
+      like, haha, love, wow, care, sad, angry,
+      totalReact: like + haha + love + wow + care + sad + angry
+    })
   }
 
   reactToAddFn = (reactName) => {
@@ -44,9 +53,9 @@ class ShowPost extends Component {
     }
   }
 
-  reactionsSort = () => {
-    const {like, haha, love, wow, care, sad} = this.state;
-    const reactionObj = {like, haha, love, wow, care, sad};
+  sortReactions = () => {
+    const {like, haha, love, wow, care, sad, angry} = this.state;
+    const reactionObj = {like, haha, love, wow, care, sad, angry};
     const reactionArr = Object.keys(reactionObj);
     let done = false;
     while (!done) {
@@ -96,12 +105,7 @@ class ShowPost extends Component {
       setTimeout(() => this.props.gunTriggeredDone(), 500)
     }
     
-    this.setState((prevState) => {
-      return  ({
-        reacted: gunMode? reactName : (reacted === reactName ? '' : reactName),
-        // totalReact: reactToAdd > 1 ? this.reactionIncressingQueue(reactToAdd): prevState.totalReact + reactToAdd
-      })
-    });
+    this.setState({reacted: gunMode? reactName : (reacted === reactName ? '' : reactName)});
   }
 
   setGunAnimation = () => {
@@ -142,7 +146,7 @@ class ShowPost extends Component {
           <div className='quantities'>
             <div className='left'>
               {
-                <SortedReactions reactionsArr={this.reactionsSort()}/>
+                <SortedReactions reactionsArr={this.sortReactions()}/>
               }
               <span className='quantity link'>{totalReact}</span>
             </div>

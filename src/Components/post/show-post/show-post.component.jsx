@@ -12,7 +12,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { gunTrigger, gunTriggeredDone } from '../../../redux/gun/gun.actions';
 
-import ReactionBox, { DisplayReactionWithName, DisplaySortedReactions } from '../../reaction-box/reaction-box';
+import ReactionBox from '../../reaction-box/reaction-box';
 import SortedReactions from '../../reaction-box/sorted-reactions';
 import ReactionWithName from '../../reaction-box/reaction-with-name';
 

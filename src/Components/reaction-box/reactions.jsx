@@ -4,7 +4,11 @@ import Care from './icons/Care.svg';
 import Love from './icons/Love.svg';
 import Wow from './icons/Wow.svg';
 import Like from './icons/Like.svg';
+import Angry from './icons/Angry.svg';
 
+export const AngryReact = ({...props}) => (
+  <img src={Angry} alt='' {...props}/>
+);
 export const LikeReact = ({...props}) => (
   <img src={Like} alt='' {...props}/>
 );

@@ -1,5 +1,5 @@
 import { LikedIcon, LikeIcon } from "../icons/icons";
-import { CareReact, HahaReact, LikeReact, LoveReact, WowReact } from "./reactions";
+import { CareReact, HahaReact, LoveReact, SadReact, WowReact } from "./reactions";
 
 
 const ReactionWithName = ({reacted}) => {
@@ -42,7 +42,7 @@ const ReactionWithName = ({reacted}) => {
     case 'sad':
       return (
         <>
-          <LikeReact className='icon sad'/>
+          <SadReact className='icon sad'/>
           <span className='sad'>Sad</span>
         </>
       );

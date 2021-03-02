@@ -78,6 +78,10 @@
         border-bottom: 3px solid #1877f2;
       }
     }
+
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
   }
 
   .right {
@@ -86,9 +90,14 @@
     width: 30%;
     margin-right: 20px;
 
-    .profile-pic {
-      width: 30px;
-      height: 30px;
+    .profile {
+      .profile-pic {
+        width: 30px;
+        height: 30px;
+      }
+      @media screen and (max-width: 700px) {
+        display: none;
+      }
     }
     
     .hover-button {
@@ -120,8 +129,13 @@
           }
         }
       }
-    }  
+    }
+
+    @media screen and (max-width: 700px) {
+      margin-right: 0;
+    }
   }
+
   .dropdown {
       position: absolute;
       top: 100%;
@@ -130,5 +144,9 @@
       width: 350px;
       box-shadow: $shadow-primary-2;
       border-radius: 0 0 10px 10px;
-    }
+  }
+
+  @media screen and (max-width: 700px) {
+    justify-content: space-between;
+  }
 }

@@ -22,21 +22,36 @@ import DropdownMenu from '../dropdown-menu/dropdown-menu.component';
 class TopNav extends Component {
   state={
     activeTab: this.props.location.pathname || 'home',
-    activeDropdownTab: ''
+    activeDropdownTab: '',
+    updates: {
+      Friends: 3,
+      Messenger: 1,
+      Notifications: 5
+    }
   }
 
   setActiveTab = (tabName, routeName) => {
+    this.handleTabClick(tabName);
     this.setState({activeTab: tabName})
     if(routeName) this.props.history.push(`${routeName}`)
   }
   setDropdownToggleTab = (tabName) => {
+    this.handleTabClick(tabName)
     this.setState(prevState => ({
       activeDropdownTab: prevState.activeDropdownTab === tabName ? '' : tabName
-    }))
+    }));
+    
+  }
+
+  handleTabClick = (tabName ) => {
+    this.setState({updates: {
+      ...this.state.updates,
+      [tabName]: 0
+    }})
   }
 
   render() {
-    const { activeTab, activeDropdownTab } = this.state
+    const { activeTab, activeDropdownTab, updates} = this.state
     const showDropdown = () => {
       switch(activeDropdownTab) {
         case 'Notifications':
@@ -52,7 +67,7 @@ class TopNav extends Component {
     return (
       <nav className='top-nav'>
         <div className='left'>
-          <Logo className='logo'/>
+          <Logo className='logo' onClick={() => this.props.history.push('/')}/>
           <div className='search'>
             <SearchIcon className='icon' height='15px'/>
             <TextInput placeholder="Search on facebook"/>
@@ -72,7 +87,7 @@ class TopNav extends Component {
             tabName='Friends'
             routeName='/friends'
             bordered
-            quantity='7'
+            quantity={updates.Friends}
             active={activeTab} 
             handleClick={this.setActiveTab}
           >
@@ -99,6 +114,7 @@ class TopNav extends Component {
         </div>
         <div className='right'>
           <TabContainer 
+            className='profile'
             tabName='Profile'
             routeName='/profile'
             bordered
@@ -120,7 +136,7 @@ class TopNav extends Component {
           <TabContainer
             tabName='Messenger'
             bordered
-            quantity='1'
+            quantity={updates.Messenger}
             active={activeDropdownTab} 
             handleClick={this.setDropdownToggleTab}
           >
@@ -130,7 +146,7 @@ class TopNav extends Component {
           <TabContainer
             tabName='Notifications'
             bordered
-            quantity='5'
+            quantity={updates.Notifications}
             active={activeDropdownTab} 
             handleClick={this.setDropdownToggleTab}
           >

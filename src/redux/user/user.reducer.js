@@ -1,7 +1,8 @@
 import userActions from "./user.action.types";
 
 const INITIAL_STATE = {
-  bio: 'New User'
+  bio: 'Visitor of this app',
+  displayName: ''
 }
 
 const userReducer = (state = INITIAL_STATE, action = {}) => {

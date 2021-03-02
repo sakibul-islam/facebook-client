@@ -1,5 +1,6 @@
 import CurrentUsersProfilePic from '../../current-user/current-users-profile-pic/current-users-profile-pic.component';
 import HoverButton from '../../hoverButton/hover-button.component';
+import { SendIcon } from '../../icons/icons';
 import './write-comment.styles.scss';
 
 const WriteComment = () => (
@@ -8,7 +9,9 @@ const WriteComment = () => (
     <div className='input'>
       <textarea type='text' placeholder='Write a comment...'/>
       <div className='send-button'>
-        <HoverButton>Send</HoverButton>
+        <HoverButton>
+          <SendIcon/>
+        </HoverButton>
       </div>
     </div>
   </div>

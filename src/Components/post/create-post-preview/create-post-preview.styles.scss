@@ -2,9 +2,10 @@
 @import '../../../colors.scss';
 
 .create-post {
-
+  margin: 10px;
   .card {
     padding: 10px;
+    margin: 0;
 
     .header {
       @include v-center();
@@ -45,6 +46,12 @@
 
         .icon {
           margin-right: 5px;
+        }
+
+        .btn-name {
+          @media screen and (max-width: 700px) {
+            display: none;
+          }
         }
       }
     }

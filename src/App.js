@@ -18,8 +18,13 @@ class App extends Component {
   componentDidMount() {
     auth.onAuthStateChanged(user => {
       console.log(user)
-      const {displayName, email, photoURL } = user;
-      this.props.setUser(({displayName, email, photoURL}))
+      if(user) {
+        const {displayName, email, photoURL } = user;
+        this.props.setUser(({displayName, email, photoURL}))
+      } else {
+        //sign in popup
+      }
+      
     })
   }
 

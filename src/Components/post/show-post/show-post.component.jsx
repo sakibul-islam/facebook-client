@@ -95,9 +95,9 @@ class ShowPost extends Component {
       this.setState(prevState => ({totalReact: prevState.totalReact + reactToAdd}))
     }
 
-    this.setState((prevState) => {
-      this.setState({[reactName]: prevState[reactName] + reactToAdd })
-    })
+    this.setState((prevState) => (
+      {[reactName]: prevState[reactName] + reactToAdd }
+    ))
 
     if(gunMode) {
       this.setGunAnimation();
@@ -120,7 +120,7 @@ class ShowPost extends Component {
     const {reacted, totalReact, reactionBox} = this.state
     const { post, gun } = this.props
     const {displayName, userName, photoURL} = post.user;
-    const {body, comments } = post;
+    const {body, comments, shares} = post;
     const reactBtnClasses = `hover-button ${gun.gunMode ? 'gun-mode': ''} ${this.state.gunAnimation}`;
 
     return (
@@ -141,8 +141,12 @@ class ShowPost extends Component {
               <ThreeDotsIcon className='dots'/>
             </div>
           </div>
-          <div className='caption'>{body}</div>
-          {/* <img src={meme} alt=''/> */}
+          {
+            body ? <div className='caption'>{body}</div> : null
+          }
+          {
+            post.photoURL ? <img src={post.photoURL} alt=''/> : null
+          }
           <div className='quantities'>
             <div className='left'>
               {
@@ -151,14 +155,23 @@ class ShowPost extends Component {
               <span className='quantity link'>{totalReact}</span>
             </div>
             <div className='right'>
-              <div className='comments link'>
-                <span className='quantity'>2</span>
-                <span>Comments</span>
-              </div>
-              <div className='shares link'>
-                <span className='quantity'>5</span>
-                <span>Shares</span>
-              </div>
+              {
+                comments.length ? (
+                  <div className='link'>
+                    <span className='quantity'>{comments.length}</span>
+                    <span>Comments</span>
+                  </div>
+                ) : null
+              }
+              {
+                shares ? (
+                  <div className='shares link'>
+                    <span className='quantity'>{shares}</span>
+                    <span>Shares</span>
+                  </div>
+                ) : null
+              }
+              
             </div>
           </div>
           <div className='actions'>

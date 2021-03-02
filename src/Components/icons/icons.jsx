@@ -2,7 +2,10 @@ import styled, { css } from 'styled-components';
 import icons2 from './icons2.png';
 import icons1 from './icons1.png';
 import icons3 from './icons3.png';
+import icons6 from './icons6.png';
 import icons7 from './icons7.png';
+import icons8 from './icons8.png';
+import icons9 from './icons9.png';
 import gunIcon from './pistol.png';
 
 const icons2Styles = css`
@@ -22,11 +25,25 @@ const icons3Styles = css`
   width: 18px;
   background-image: url(${icons3});
 `;
-
+const icons6Styles = css`
+  height: 20px;
+  width: 20px;
+  background-image: url(${icons6});
+`;
 const icons7Styles = css`
   height: 20px;
   width: 20px;
   background-image: url(${icons7});
+`;
+const icons8Styles = css`
+  height: 20px;
+  width: 20px;
+  background-image: url(${icons8});
+`;
+const icons9Styles = css`
+  height: 20px;
+  width: 20px;
+  background-image: url(${icons9});
 `;
 
 export const LikeIcon = styled.i`
@@ -76,7 +93,17 @@ export const CrossIcon = styled.i`
   ${icons3Styles}
   background-position: 1px 74px;
 `;
+export const PlusIcon = styled.i`
+  ${icons3Styles}
+  background-position: -1px 132px;
+`;
+export const SendIcon = styled.i`
+  ${icons6Styles}
+  background-position: -20px 21px;
+  filter: invert(0.39) sepia(0.12);
+`;
 
+//for menu dropdown
 export const LogOutIcon = styled.i`
   ${icons7Styles}
   background-position: 0 399px;
@@ -87,15 +114,41 @@ export const DarkModeIcon = styled.i`
   background-position: 0 294px;
 `;
 
-export const SignInIcon = styled.i`
-  ${icons7Styles}
-  background-position: 0 168px;
-`;
-
-
 export const GunIcon = styled.i`
   width: 20px;
   height: 20px;
   background-image: url(${gunIcon});
   background-size: cover;
 `;
+
+export const HelpSupportIcon = styled.i`
+  ${icons7Styles}
+  background-position: 0 210px;
+`;
+
+export const SignInIcon = styled.i`
+  ${icons7Styles}
+  background-position: 0 168px;
+`;
+
+export const SettingIcon = styled.i`
+  ${icons9Styles}
+  background-position: 1px 20px;
+  background-size: 37px;
+`;
+
+
+  //for pages
+export const MessageIcon = styled.i`
+  ${icons8Styles}
+  background-position: 0 205px;
+`;
+export const NotificationIcon = styled.i`
+  ${icons8Styles}
+  background-position: 0 105px;
+`;
+export const PromotionIcon = styled.i`
+  ${icons8Styles}
+  background-position: 0 41px;
+`;
+

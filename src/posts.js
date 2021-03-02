@@ -1,4 +1,5 @@
 const posts = [
+  
   {
     user: {
       displayName: 'Harry Potter',
@@ -6,12 +7,12 @@ const posts = [
       photoURL: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/Harry_Potter_character_poster.jpg/220px-Harry_Potter_character_poster.jpg'
     },
     id: 0,
-    time: '17 Jan 2012',
-    title: "nesciunt quas odio",
-    body: "Irure sit nostrud aliqua laboris eiusmod exercitation nostrud ex velit. Culpa proident culpa laboris sint labore commodo nulla duis ad non enim minim aute magna. Occaecat id dolor duis consequat proident non qui cillum reprehenderit est exercitation aliquip ex aliqua. Duis ad ullamco ullamco Lorem ea occaecat duis. Occaecat non excepteur id do aliqua laboris non adipisicing.",
+    time: '17 Jan 2005',
+    title: "",
+    body: "It's easier to battle a dragon than asking a girl for date.",
     reactions: {
-      like: 7,
-      haha: 3,
+      like: 1,
+      haha: 5,
       love: 2,
       wow: 2,
       care: 0,
@@ -26,20 +27,79 @@ const posts = [
           photoURL: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Hermione_Granger_poster.jpg/220px-Hermione_Granger_poster.jpg'
         },
         id: 1,
-        time: '17 Jan 2012',
-        body: 'Quis elit labore id commodo sunt sunt sunt.'
+        time: '17 Jan 2005',
+        body: 'Go get a dragon to date'
       },
       {
         user: {
-          displayName: 'Harry Potter',
-          userName: 'harry',
-          photoURL: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/Harry_Potter_character_poster.jpg/220px-Harry_Potter_character_poster.jpg'
+          displayName: 'Ronald Weasley',
+          userName: 'ron',
+          photoURL: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Ron_Weasley_poster.jpg/220px-Ron_Weasley_poster.jpg',
         },
         id: 2,
-        time: '17 Jan 2012',
-        body: 'Proident duis non labore duis Lorem minim veniam ad magna.'
+        time: '17 Jan 2005',
+        body: "Hermione, you are a girl. Can't you come with one of us for the dance?"
+      },
+      {
+        user: {
+          displayName: 'Fred Weasley',
+          userName: 'fred',
+          photoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxaBRDrxWQe8kk05sz_CSNozXXw9yNW8SqXQ&usqp=CAU',
+        },
+        id: 3,
+        time: '17 Jan 2005',
+        body: "Ron, get a move on or all the good ones will have gone."
       }
     ]
+  },
+  {
+    user: {
+      displayName: 'Fred Weasley',
+      userName: 'fred',
+      photoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxaBRDrxWQe8kk05sz_CSNozXXw9yNW8SqXQ&usqp=CAU',
+    },
+    id: 4.1,
+    time: '17 Jan 2005',
+    title: "",
+    body: "",
+    photoURL: "https://i.ibb.co/j5h94b2/future.jpg",
+    reactions: {
+      like: 0,
+      haha: 15,
+      love: 2,
+      wow: 0,
+      care: 0,
+      sad: 0,
+      angry: 0
+    },
+    comments: [
+    ],
+    shares: 3
+  },
+  {
+    user: {
+      displayName: 'Luna Lovegood',
+      userName: 'luna',
+      photoURL: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/LunaLovegood.jpeg/220px-LunaLovegood.jpeg'
+    },
+    id: 1,
+    time: '17 Jan 2005',
+    title: "",
+    body: "",
+    photoURL: "https://i.ibb.co/BVQz3rQ/love-from-heart.jpg",
+    reactions: {
+      like: 1,
+      haha: 0,
+      love: 8,
+      wow: 0,
+      care: 0,
+      sad: 0,
+      angry: 0
+    },
+    comments: [
+  
+    ], 
+    shares: 2
   },
   {
     user: {
@@ -47,41 +107,70 @@ const posts = [
       userName: 'hermione',
       photoURL: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Hermione_Granger_poster.jpg/220px-Hermione_Granger_poster.jpg'
     },
-    id: 1,
-    time: '19 Jan 2012',
-    title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+    id: 2,
+    time: '17 Jan 2005',
+    title: "",
+    body: "",
+    photoURL: "https://i.ibb.co/2h7FTqN/chosen-one.jpg",
     reactions: {
-      like: 5,
-      haha: 3,
-      love: 9,
+      like: 1,
+      haha: 10,
+      love: 6,
       wow: 2,
       care: 0,
       sad: 0,
       angry: 0
     },
     comments: [
-      {
-        user: {
-          displayName: 'Harry Potter',
-          userName: 'harry',
-          photoURL: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/Harry_Potter_character_poster.jpg/220px-Harry_Potter_character_poster.jpg'
-        },
-        id: 1,
-        time: '19 Jan 2012',
-        body: 'omnis possimus esse voluptatibus quis est'
-      },
-      {
-        user: {
-          displayName: 'Hermione Granger',
-          userName: 'hermione',
-          photoURL: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Hermione_Granger_poster.jpg/220px-Hermione_Granger_poster.jpg'
-        },
-        id: 2,
-        time: '19 Jan 2012',
-        body: 'omnis possimus esse voluptatibus quis est'
-      }
     ]
+  },
+  {
+    user: {
+      displayName: 'Ronald Weasley',
+      userName: 'ron',
+      photoURL: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Ron_Weasley_poster.jpg/220px-Ron_Weasley_poster.jpg',
+    },
+    id: 3,
+    time: '17 Jan 2005',
+    title: "",
+    body: "",
+    photoURL: "https://i.ibb.co/9wKFP2H/Did-I-blame-you.jpg",
+    reactions: {
+      like: 1,
+      haha: 10,
+      love: 2,
+      wow: 0,
+      care: 0,
+      sad: 0,
+      angry: 0
+    },
+    comments: [
+    ],
+    shares: 6
+  },
+  {
+    user: {
+      displayName: 'Fred Weasley',
+      userName: 'fred',
+      photoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxaBRDrxWQe8kk05sz_CSNozXXw9yNW8SqXQ&usqp=CAU',
+    },
+    id: 4,
+    time: '17 Jan 2005',
+    title: "",
+    body: "",
+    photoURL: "https://i.ibb.co/j5h94b2/future.jpg",
+    reactions: {
+      like: 0,
+      haha: 15,
+      love: 2,
+      wow: 0,
+      care: 0,
+      sad: 0,
+      angry: 0
+    },
+    comments: [
+    ],
+    shares: 3
   }
   ]
 

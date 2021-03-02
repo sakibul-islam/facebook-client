@@ -18,15 +18,15 @@ const CreatePostPreview = () => {
         <div className='media'>
           <HoverButton>
             <LiveVideoIcon className='icon'/>
-            <span>Live Video</span>
+            <span className='btn-name'>Live Video</span>
           </HoverButton>
           <HoverButton>
             <PhotoVideoIcon className='icon'/>
-            <span>Photo/Video</span>
+            <span className='btn-name' >Photo/Video</span>
           </HoverButton>
           <HoverButton>
             <FeelingActivityIcon className='icon'/>
-            <span>Feeling/Activity</span>
+            <span className='btn-name' >Feeling/Activity</span>
           </HoverButton>
         </div>
       </Card>

@@ -6,7 +6,7 @@ const Name = ({userName, displayName, staticContext, history, location, match, .
     className='name-component' 
     onClick={() => history.push(`/profile/${userName}`)}
     {...otherProps}
-  > {displayName}</span>
+  >{displayName}</span>
 );
 
 export default withRouter(Name);

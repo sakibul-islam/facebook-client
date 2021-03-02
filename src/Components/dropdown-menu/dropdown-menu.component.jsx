@@ -6,7 +6,7 @@ import IconContainer from "../top-nav/icon-container/icon-container.component";
 import { connect } from "react-redux";
 
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
-import { DarkModeIcon, GunIcon, LogOutIcon, SignInIcon } from "../icons/icons";
+import { DarkModeIcon, GunIcon, HelpSupportIcon, SettingIcon, LogOutIcon, SignInIcon } from "../icons/icons";
 
 import { addGunInAnimation, addGunOutAnimation, removeGunInAnimation, removeGunOutAnimation, toggleGunMode } from "../../redux/gun/gun.actions";
 import { Component } from "react";
@@ -73,7 +73,7 @@ class DropdownMenu extends Component {
             <GunIcon/>
           </IconContainer>
           <div className='other'>
-            <span className='name'>{gunMode ? "Turn Off Fire" : "Turn On Fire"}</span>
+            <span className='name'>Reactor Gun</span>
             <span className='message'></span>
           </div>
         </div>
@@ -88,11 +88,26 @@ class DropdownMenu extends Component {
         
         <div className='item' >
           <IconContainer>
+            <SettingIcon/>
+          </IconContainer>
+          <div className='other'>
+            <span className='name'>Settings & Privacy</span>
+          </div>
+        </div>
+        <div className='item' >
+          <IconContainer>
+            <HelpSupportIcon/>
+          </IconContainer>
+          <div className='other'>
+            <span className='name'>Help & Support</span>
+          </div>
+        </div>
+        <div className='item' >
+          <IconContainer>
             <DarkModeIcon/>
           </IconContainer>
           <div className='other'>
-            <span className='name'>Dark Mode</span>
-            <span className='message'>For Eye Care</span>
+            <span className='name'>Display & Accessibility</span>
           </div>
         </div>
 

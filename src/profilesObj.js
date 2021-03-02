@@ -55,14 +55,30 @@ const profiles = {
     photos: [],
     bio: 'Quidditch Seeker and Chaser, and member of Dumbledore\'s Army',
     born: '11 August 1981'
+  },
+  fred: {
+    displayName: 'Fred Weasley',
+    userName: 'fred',
+    nickName: 'Fred',
+    photoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxaBRDrxWQe8kk05sz_CSNozXXw9yNW8SqXQ&usqp=CAU',
+    photos: [],
+    bio: 'Member of Dumbledore\'s Army',
+    born: '21 August 1978'
   }
+}
+
+export const sakib = {
+  displayName: 'Sakibul Islam',
+  userName: 'sakib',
+  nickName: 'Sakib',
+  photoURL: 'https://lh3.googleusercontent.com/a-/AOh14GhBPYYIvX9VuKQh_4uiK0qLtyfvXneAGNP9cl0VGA=s96-c',
+  photos: [],
+  bio: 'Developer Of This Application',
+  born: ''
 }
 
 export const userProfileForAddFriend = Object.keys(profiles).filter((key, i) => (i % 2)).map(key => profiles[key])
 
-console.log(userProfileForAddFriend)
-
 export const userWhoSentRequest = Object.keys(profiles).filter((key, i) => !(i % 2)).map(key => profiles[key])
 
-console.log(userWhoSentRequest)
 export default profiles;

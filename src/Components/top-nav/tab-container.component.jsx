@@ -2,9 +2,9 @@ import { withRouter } from "react-router-dom";
 import HoverButton from "../hoverButton/hover-button.component";
 import IconContainer from "./icon-container/icon-container.component";
 
-const TabContainer = ({routeName, tabName, active, bordered, children, quantity, handleClick}) => (
+const TabContainer = ({routeName, tabName, className, active, bordered, children, quantity, handleClick}) => (
   <HoverButton
-    className={`hover-button ${active === tabName ? 'active' : ''}`}
+    className={`hover-button ${className} ${active === tabName ? 'active' : ''}`}
     onClick={() => handleClick(tabName, routeName)}
     tooltip={tabName}>
     <IconContainer quantity={quantity}>

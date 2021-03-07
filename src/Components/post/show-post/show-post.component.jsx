@@ -119,8 +119,11 @@ class ShowPost extends Component {
   render() {
     const {reacted, totalReact, reactionBox} = this.state
     const { post, gun } = this.props
-    const {displayName, userName, photoURL} = post.user;
+    const {displayName, userName } = post.user;
     const {body, comments, shares} = post;
+    console.log(post.time)
+    const time = new Date( new Number("1615102315754")).toLocaleDateString();
+    const {caption } = body;
     const reactBtnClasses = `hover-button ${gun.gunMode ? 'gun-mode': ''} ${this.state.gunAnimation}`;
 
     return (
@@ -128,13 +131,13 @@ class ShowPost extends Component {
         <Card>
           <div className='post-header'>
             <div className='left'>
-              <ProfilePic userName={userName} photoURL={photoURL} />
+              <ProfilePic userName={userName} photoURL={post.user.photoURL} />
               <div className='details'>
                 <span className='names'>
                   <Name displayName={displayName || 'Display Name'} userName={userName || 'user123'} />
                   {/* ❯ <span className='group-name'>Group's Name</span> */}
                 </span>
-                <span className='time'>{post.time}</span>
+                <span className='time'>{time}</span>
               </div>
             </div>
             <div className='right'>
@@ -142,10 +145,10 @@ class ShowPost extends Component {
             </div>
           </div>
           {
-            body ? <div className='caption'>{body}</div> : null
+            caption ? <div className='caption'>{caption}</div> : null
           }
           {
-            post.photoURL ? <img src={post.photoURL} alt=''/> : null
+            body.photoURL ? <img src={body.photoURL} alt=''/> : null
           }
           <div className='quantities'>
             <div className='left'>

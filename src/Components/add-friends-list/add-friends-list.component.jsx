@@ -2,6 +2,7 @@ import AddFriend from "../add-friend/add-friend.component";
 import { userProfileForAddFriend } from '../../profilesObj';
 import { Component } from "react";
 import './add-friends-list.styles.scss';
+import { requestToGraphQl } from "../../graphql/graphql";
 
 class AddFriendsList extends Component {
   state = {
@@ -13,6 +14,22 @@ class AddFriendsList extends Component {
       users: prevState.users.filter(user => user.userName !== targetUserName)
     }))
   }
+
+  componentDidMount = () => {
+		requestToGraphQl({
+      query: `{
+        friendSuggestions {
+          displayName
+          userName
+          photoURL
+        }
+      }`,
+    })
+			.then((result) => {
+        console.log(result.data.friendSuggestions);
+        this.setState({users: result.data.friendSuggestions})
+      });
+	};
 
   render() {
     return (

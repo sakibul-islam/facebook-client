@@ -3,30 +3,36 @@ import { useState } from "react";
 import "./create-post-modal.styles.scss";
 import { requestToGraphQl } from "../../../graphql/graphql";
 
-const CreatePostModal = ({user: {email}, setModal}) => {
+const CreatePostModal = ({userName, setModal}) => {
   const [caption, setCaption] = useState('');
+
   const handleChange = (event) => {
     setCaption(event.target.value)
   }
+
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log({caption, email})
-    requestToGraphQl({
-      query: `mutation {
-        addPost(
-          userName: "${email}"
-          caption: "${caption}"
-          ) {
+    // console.log({caption, userName})
+    const query = {
+      query: `mutation($userName: String!, $caption: String!) {
+        addPost(userName: $userName, caption: $caption ) {
             body {
               caption
             }
           }
-      }
-  `
-  }).then(console.log)
+      }`,
+      variables: `{
+        "userName": "${userName}",
+        "caption": "${caption}"
+      }`
+    }
+    setCaption('');
+
+    requestToGraphQl(query).then(() => {
+      setModal(false);
+    })
   }
   const hideModla = (event) => {
-    console.log(event.target.className)
     if (event.target.className === "post-modal-container") setModal(false)
   }
 	return (
@@ -42,8 +48,8 @@ const CreatePostModal = ({user: {email}, setModal}) => {
 	);
 };
 
-const mapDispatchToProps = ({user}) => ({
-  user
+const mapDispatchToProps = ({user: {userName}}) => ({
+  userName
 })
 
 export default connect(mapDispatchToProps)(CreatePostModal);

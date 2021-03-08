@@ -4,14 +4,14 @@ import HoverButton from '../../hoverButton/hover-button.component';
 import './create-post-preview.styles.scss';
 import { LiveVideoIcon, PhotoVideoIcon, FeelingActivityIcon } from '../../icons/icons'
 
-const CreatePostPreview = () => {
+const CreatePostPreview = ({setModal}) => {
 
   return (
     <div className='create-post'>
       <Card >
         <div className='header'>
           <CurrentUsersProfilePic/>
-          <HoverButton>
+          <HoverButton onClick={() => setModal(true)}>
             What's on your mind?
           </HoverButton>
         </div>

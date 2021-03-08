@@ -1,4 +1,3 @@
-import CreatePostPreview from "../post/create-post-preview/create-post-preview.component";
 import ShowPost from "../post/show-post/show-post.component";
 import "./contents.styles.scss";
 import postArr from "../../posts";
@@ -6,6 +5,7 @@ import Gun from "../gun/gun.component";
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 import { requestToGraphQl } from "../../graphql/graphql";
+import CreatePost from "../post/create-post/create-post";
 
 const Contents = ({ gun }) => {
  const [posts, setPosts] = useState(postArr)
@@ -54,7 +54,7 @@ const Contents = ({ gun }) => {
 
 	return (
 		<div className="contents">
-			<CreatePostPreview />
+			<CreatePost/>
 			{posts.map((post) => (
 				<ShowPost post={post} key={post.id} />
 			))}

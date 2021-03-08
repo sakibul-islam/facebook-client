@@ -121,8 +121,7 @@ class ShowPost extends Component {
     const { post, gun } = this.props
     const {displayName, userName } = post.user;
     const {body, comments, shares} = post;
-    console.log(post.time)
-    const time = new Date( new Number("1615102315754")).toLocaleDateString();
+    const time = new Date(Number("1615102315754")).toLocaleDateString();
     const {caption } = body;
     const reactBtnClasses = `hover-button ${gun.gunMode ? 'gun-mode': ''} ${this.state.gunAnimation}`;
 

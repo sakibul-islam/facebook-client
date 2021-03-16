@@ -64,6 +64,24 @@ const profiles = {
     photos: [],
     bio: 'Member of Dumbledore\'s Army',
     born: '21 August 1978'
+  },
+  sakib: {
+    displayName: 'Sakibul Islam',
+    userName: 'sakib',
+    nickName: 'Sakib',
+    photoURL: 'https://lh3.googleusercontent.com/a-/AOh14GhBPYYIvX9VuKQh_4uiK0qLtyfvXneAGNP9cl0VGA=s96-c',
+    photos: [],
+    bio: 'Developer Of This Application',
+    born: ''
+  },
+  undefined: {
+    displayName: 'Anonymous',
+    userName: 'undefined',
+    nickName: 'Visitor',
+    photoURL: 'https://images.squarespace-cdn.com/content/v1/533cb201e4b034a40913594b/1505399195395-W70O8FBXHCBH2D2Y3P95/ke17ZwdGBToddI8pDm48kNia5CZS3auKPpBVQQ1rmJpZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwT1-K47BMGCoLwSVQc5wfJsjuQtaeevZ3k8CtBVEbewwre_9gJVeO4ZiDp85yJv0g/anonymous.png',
+    photos: [],
+    bio: '',
+    born: ''
   }
 }
 

@@ -11,9 +11,28 @@ import studyIcon from './study.png';
 import { connect } from "react-redux";
 
 import profiles from '../../profilesObj';
+import { useEffect, useState } from 'react';
+import { requestToGraphQl } from '../../graphql/graphql';
 
-const Profile = ({profile}) =>  {
-  const { displayName, nickName, photoURL, photos, coverURL, bio, born } = profile;
+const Profile = ({userName}) =>  {
+  const [profile, setProfile] = useState({});
+  useEffect(() => {
+    requestToGraphQl({
+      query: `{
+        user (userName: "${userName}") {
+        displayName
+        photoURL
+        photos
+        userName
+        nickName
+        bio
+        born
+      }}`
+    }).then(result => {
+      setProfile(result.data.user)
+    })
+  })
+  const { displayName, nickName, photoURL, photos, coverURL, bio, born, followedBy } = profile;
   return (
     <div className='profile-page'>
       <div className='profile-header'>
@@ -63,14 +82,17 @@ const Profile = ({profile}) =>  {
               </div>
             ) : null
           }
-          
-          <div className='section followed-by'>
+          {
+            followedBy ? (
+              <div className='section followed-by'>
             <span className='icon'>
               <img src={followIcon} alt='' />
             </span>
             <span> Followed by </span>
-            <span className='link'> 5000 people</span>
+            <span className='link'>{followedBy}</span>
           </div>
+            ) : null
+          }
         </div>
         
         {
@@ -100,7 +122,8 @@ const Profile = ({profile}) =>  {
 
 const mapStateToProps = ({user}, {match: {params: {userName}}}) => ({
   currentUser: user,
-  profile: userName ? profiles[userName] : user
+  profile: userName ? profiles[userName] : user,
+  userName
 })
 
 

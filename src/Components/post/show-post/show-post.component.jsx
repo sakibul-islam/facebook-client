@@ -152,9 +152,13 @@ class ShowPost extends Component {
           <div className='quantities'>
             <div className='left'>
               {
+                totalReact > 0 ? (
+                  <>
                 <SortedReactions reactionsArr={this.sortReactions()}/>
-              }
               <span className='quantity link'>{totalReact}</span>
+                  </>
+                ) : ''
+              }
             </div>
             <div className='right'>
               {

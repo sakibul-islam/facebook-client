@@ -6,9 +6,11 @@ import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 import { requestToGraphQl } from "../../graphql/graphql";
 import CreatePost from "../post/create-post/create-post";
+import PostsContext from '../../contexts/posts.context';
 
 const Contents = ({ gun }) => {
- const [posts, setPosts] = useState(postArr)
+ const [posts, setPosts] = useState(postArr);
+
 	useEffect(() => {
 		requestToGraphQl({
       query: `{
@@ -54,7 +56,9 @@ const Contents = ({ gun }) => {
 
 	return (
 		<div className="contents">
-			<CreatePost/>
+      <PostsContext.Provider value={{posts, setPosts}}>
+			  <CreatePost />
+      </PostsContext.Provider>
 			{posts.map((post) => (
 				<ShowPost post={post} key={post.id} />
 			))}

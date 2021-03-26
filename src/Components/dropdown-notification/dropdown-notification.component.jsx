@@ -16,7 +16,7 @@ const DropdownNotification = () => (
         <ProfilePic/>
         <div className='notification'>
           <div className='body'>
-            <sapn className='link'>Your Crush</sapn>
+            <span className='link'>Your Crush</span>
             visited you profile 3 times today
           </div>
           <span className='time'>2 hours ago</span>
@@ -26,7 +26,7 @@ const DropdownNotification = () => (
         <ProfilePic/>
         <div className='notification'>
           <div className='body'>
-            <sapn className='link'>Your Ex</sapn>
+            <span className='link'>Your Ex</span>
             reading your old message
           </div>
           <span className='time'>3 hours ago</span>
@@ -36,7 +36,7 @@ const DropdownNotification = () => (
         <ProfilePic/>
         <div className='notification'>
           <div className='body'>
-            <sapn className='link'>Someone</sapn> and <sapn className='link'>7 others</sapn>
+            <span className='link'>Someone</span> and <span className='link'>7 others</span>
             viewed you post but didn't react
           </div>
           <span className='time'>5 hours ago</span>
@@ -46,7 +46,7 @@ const DropdownNotification = () => (
         <ProfilePic photoURL={sakib.photoURL}/>
         <div className='notification'>
           <div className='body'>
-            <sapn className='link'>Sakibul Islam</sapn>
+            <span className='link'>Sakibul Islam</span>
             deployed the app
           </div>
           <span className='time'>7 hours ago</span>

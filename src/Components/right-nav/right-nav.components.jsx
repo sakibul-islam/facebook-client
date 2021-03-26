@@ -68,9 +68,6 @@ const RightNav = () => {
           <div className='header'>
             Group Conversations
           </div>
-          <ItemContainer itemName='Outer You, You and Inner You'>
-            <ProfilePic />
-          </ItemContainer>
           <ItemContainer itemName="Dumbledore's Army">
             <ProfilePic photoURL="https://www.gcpsk12.org/cms/lib/GA02204486/Centricity/Domain/7328/Dumbledore-s-Army-dumbledore-27s-army-123514_1024_768.jpg" />
           </ItemContainer>

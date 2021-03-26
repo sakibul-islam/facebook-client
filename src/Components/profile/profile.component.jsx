@@ -2,6 +2,7 @@
 // import CreatePostPreview from '../../Components/post/create-post-preview/create-post-preview.component';
 // import ShowPost from '../../Components/post/show-post/show-post.component';
 // import posts from '../../posts';
+// import profiles from '../../profilesObj';
 
 import './profile.styles.scss';
 import homeIcon from './home.png'
@@ -9,8 +10,6 @@ import followIcon from './follow.png';
 import studyIcon from './study.png';
 
 import { connect } from "react-redux";
-
-import profiles from '../../profilesObj';
 import { useEffect, useState } from 'react';
 import { requestToGraphQl } from '../../graphql/graphql';
 
@@ -31,8 +30,10 @@ const Profile = ({userName}) =>  {
     }).then(result => {
       setProfile(result.data.user)
     })
-  })
+  }, [])
   const { displayName, nickName, photoURL, photos, coverURL, bio, born, followedBy } = profile;
+  const bornDate = new Date(Number(born)).toDateString();
+  console.log(photos)
   return (
     <div className='profile-page'>
       <div className='profile-header'>
@@ -78,7 +79,7 @@ const Profile = ({userName}) =>  {
                   <img src={homeIcon} alt='' />
                 </span>
                 <span>Born</span>
-                <span className='link'>{born}</span>
+                <span className='link'>{bornDate}</span>
               </div>
             ) : null
           }
@@ -100,7 +101,7 @@ const Profile = ({userName}) =>  {
             photos.length ? (
               <div className='photos'>
                 {
-                  photos.map(photoUrl => <div className='photo' style={{backgroundImage: `url(${photoUrl})`}}></div>)
+                  photos.map((photoUrl, index) => <div key={index} className='photo' style={{backgroundImage: `url(${photoUrl})`}}></div>)
                 }
               </div>
             ) : null 
@@ -121,8 +122,6 @@ const Profile = ({userName}) =>  {
 }
 
 const mapStateToProps = ({user}, {match: {params: {userName}}}) => ({
-  currentUser: user,
-  profile: userName ? profiles[userName] : user,
   userName
 })
 

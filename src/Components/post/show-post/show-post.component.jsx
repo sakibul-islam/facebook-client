@@ -120,8 +120,8 @@ class ShowPost extends Component {
     const {reacted, totalReact, reactionBox} = this.state
     const { post, gun } = this.props
     const {displayName, userName } = post.user;
-    const {body, comments, shares} = post;
-    const time = new Date(Number("1615102315754")).toLocaleDateString();
+    const {body, comments, shares, time} = post;
+    const ParsedTime = new Date(Number(time)).toLocaleDateString();
     const {caption } = body;
     const reactBtnClasses = `hover-button ${gun.gunMode ? 'gun-mode': ''} ${this.state.gunAnimation}`;
 
@@ -133,10 +133,10 @@ class ShowPost extends Component {
               <ProfilePic userName={userName} photoURL={post.user.photoURL} />
               <div className='details'>
                 <span className='names'>
-                  <Name displayName={displayName || 'Display Name'} userName={userName || 'user123'} />
+                  <Name displayName={displayName} userName={userName} />
                   {/* ❯ <span className='group-name'>Group's Name</span> */}
                 </span>
-                <span className='time'>{time}</span>
+                <span className='time'>{ParsedTime}</span>
               </div>
             </div>
             <div className='right'>

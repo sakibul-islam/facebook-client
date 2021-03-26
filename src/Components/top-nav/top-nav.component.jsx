@@ -13,7 +13,7 @@ import { ReactComponent as CaretDown} from './icons/caret-down.svg';
 
 import CurrentUsersProfilePic from '../current-user/current-users-profile-pic/current-users-profile-pic.component';
 import { withRouter } from 'react-router-dom';
-import { Component } from 'react';
+import { Component, createRef } from 'react';
 import TabContainer from './tab-container.component';
 import DropdownNotification from '../dropdown-notification/dropdown-notification.component';
 import DropdownMessenger from '../dropdown-message/dropdown-messenger.component';
@@ -50,8 +50,28 @@ class TopNav extends Component {
     }})
   }
 
+  dropdownRef = createRef();
+
+  componentDidMount = () => {
+    document.addEventListener('mousedown', (e) => {
+      const rightButtons = document.querySelectorAll('.top-nav .right .hover-button');
+      const buttons = [...rightButtons]
+      const dropdownButtons = buttons.filter(btn => !btn.classList.contains('profile'));
+      // console.log(this.dropdownRef);
+      if(!this.dropdownRef.current.contains(e.target)) {
+        const check = dropdownButtons.find(button => {
+          // console.log(button.contains(e.target));
+          return button.contains(e.target);
+        })
+        // console.log(check);
+        if(!check) this.setState({activeDropdownTab: ''});
+      }
+      // console.log(e.target);
+      // console.log(this.dropdownRef.current.contains(e.target));
+    })
+  }
   render() {
-    const { activeTab, activeDropdownTab, updates} = this.state
+    const { activeTab, activeDropdownTab, updates} = this.state;
     const showDropdown = () => {
       switch(activeDropdownTab) {
         case 'Notifications':
@@ -64,6 +84,7 @@ class TopNav extends Component {
           return null
       }
     }
+
     return (
       <nav className='top-nav'>
         <div className='left'>
@@ -162,7 +183,7 @@ class TopNav extends Component {
             <CaretDown className='icon'/>
           </TabContainer>
         </div>
-        <div className='dropdown'>
+        <div className='dropdown' ref={this.dropdownRef}>
         {
           showDropdown()
         }

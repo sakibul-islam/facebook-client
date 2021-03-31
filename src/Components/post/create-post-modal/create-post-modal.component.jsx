@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import "./create-post-modal.styles.scss";
 import { requestToGraphQl } from "../../../graphql/graphql";
 import PostsContext from "../../../contexts/posts.context";
+import ProfilePic from "../../profile-pic/profile-pic.component";
 
 const CreatePostModal = ({ userName, setModal }) => {
 	const [caption, setCaption] = useState("");
@@ -18,6 +19,7 @@ const CreatePostModal = ({ userName, setModal }) => {
       case 'photo':
         console.log(event.target.files[0]);
         setPhoto(event.target.files[0])
+        console.log(photo)
         // const reader = new FileReader();
         // reader.readAsDataURL(event.target.files[0]);
         // reader.onloadend = () => {
@@ -105,9 +107,11 @@ const CreatePostModal = ({ userName, setModal }) => {
 		<div className="post-modal-container" onClick={hideModla}>
 			<div className="post-modal">
 				<form onSubmit={handleSubmit}>
-          <button onClick={() => setModal(false)}>Close</button>
-					<h2>What's on your mind?</h2>
-					<textarea name="caption" value={caption} onChange={handleChange} />
+          <div>
+            <ProfilePic/>
+          </div>
+          <button className='close' onClick={() => setModal(false)}>X</button>
+					<textarea className="caption" name="caption" value={caption} onChange={handleChange} placeholder="What's on your mind?" />
           <input name="photo" type="file" onChange={handleChange}/>
 					<input type="submit" value="Send" />
           {/* <img src={}/> */}

@@ -97,6 +97,12 @@ export const PlusIcon = styled.i`
   ${icons3Styles}
   background-position: -1px 132px;
 `;
+export const EarthIcon = styled.i`
+  ${icons3Styles}
+  height: 14px;
+  width: 14px;
+  background-position: -183px 27px;
+`;
 export const SendIcon = styled.i`
   ${icons6Styles}
   background-position: -20px 21px;

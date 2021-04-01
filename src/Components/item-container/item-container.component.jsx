@@ -1,8 +1,8 @@
 import IconContainer from "../top-nav/icon-container/icon-container.component";
 import './item-container.styles.scss';
 
-const ItemContainer = ({iconSrc, children, itemName, extra, onClick}) => (
-  <div className='item' onClick={onClick}>
+const ItemContainer = ({iconSrc, children, itemName, extra, onClick, className}) => (
+  <div className={`item ${className? className: ''}`} onClick={onClick}>
     <IconContainer>
     {
       iconSrc 

@@ -4,8 +4,10 @@ import "./create-post-modal.styles.scss";
 import { requestToGraphQl } from "../../../graphql/graphql";
 import PostsContext from "../../../contexts/posts.context";
 import ProfilePic from "../../profile-pic/profile-pic.component";
+import { CrossIcon, EarthIcon } from "../../icons/icons";
+import Name from "../../name/name.component";
 
-const CreatePostModal = ({ userName, setModal }) => {
+const CreatePostModal = ({ userName, displayName, setModal }) => {
 	const [caption, setCaption] = useState("");
   const [photo, setPhoto] = useState("");
 	const { posts, setPosts } = useContext(PostsContext);
@@ -107,13 +109,30 @@ const CreatePostModal = ({ userName, setModal }) => {
 		<div className="post-modal-container" onClick={hideModla}>
 			<div className="post-modal">
 				<form onSubmit={handleSubmit}>
-          <div>
-            <ProfilePic/>
+          <div className="header">
+            <h2>Create Post</h2>
+            <div className='close-btn' onClick={() => setModal(false)}>
+              <CrossIcon/>
+            </div>
+            <hr/>
           </div>
-          <button className='close' onClick={() => setModal(false)}>X</button>
+          <div className="owner">
+            <div className='left'>
+              <ProfilePic/>
+              <div className='right'>
+                <Name displayName={displayName}/>
+                <div className='privacy'>
+                  <EarthIcon className='icon'/>
+                  <span>Public</span>
+                </div>
+              </div>
+            </div>
+            
+            
+          </div>
 					<textarea className="caption" name="caption" value={caption} onChange={handleChange} placeholder="What's on your mind?" />
-          <input name="photo" type="file" onChange={handleChange}/>
-					<input type="submit" value="Send" />
+          {/* <input name="photo" type="file" onChange={handleChange}/> */}
+					<input className="post-btn" disabled={caption? false: true} type="submit" value="Post" />
           {/* <img src={}/> */}
 				</form>
 			</div>
@@ -121,8 +140,8 @@ const CreatePostModal = ({ userName, setModal }) => {
 	);
 };
 
-const mapDispatchToProps = ({ user: { userName } }) => ({
-	userName,
+const mapDispatchToProps = ({ user: { userName, displayName } }) => ({
+	userName, displayName
 });
 
 export default connect(mapDispatchToProps)(CreatePostModal);

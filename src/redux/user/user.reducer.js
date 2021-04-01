@@ -2,7 +2,7 @@ import userActions from "./user.action.types";
 
 const INITIAL_STATE = {
   bio: 'Visitor of this app',
-  displayName: ''
+  displayName: 'Anonymous'
 }
 
 const userReducer = (state = INITIAL_STATE, action = {}) => {

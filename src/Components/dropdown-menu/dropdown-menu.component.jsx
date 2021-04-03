@@ -45,7 +45,7 @@ class DropdownMenu extends Component {
     return (
       <div className='dropdown-menu'>
         {
-          user.displayName ? (
+          user.email ? (
           <div className='item profile'>
             <CurrentUsersProfilePic />
             <div className='other'>

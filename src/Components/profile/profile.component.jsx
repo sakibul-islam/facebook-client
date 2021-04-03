@@ -2,7 +2,7 @@
 // import CreatePostPreview from '../../Components/post/create-post-preview/create-post-preview.component';
 // import ShowPost from '../../Components/post/show-post/show-post.component';
 // import posts from '../../posts';
-// import profiles from '../../profilesObj';
+import profiles from '../../profilesObj';
 
 import './profile.styles.scss';
 import homeIcon from './home.png'
@@ -29,6 +29,8 @@ const Profile = ({userName}) =>  {
       }}`
     }).then(result => {
       setProfile(result.data.user)
+    }).catch(err => {
+      setProfile(profiles[userName])
     })
   }, [])
   const { displayName, nickName, photoURL, photos, coverURL, bio, born, followedBy } = profile;

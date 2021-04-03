@@ -12,6 +12,7 @@ import { Component } from 'react';
 import { auth } from './firebase/firebase.utils';
 import { connect } from 'react-redux';
 import { setUser } from './redux/user/user.action';
+import WatchPage from './pages/watch/watch.page';
 
 class App extends Component {
 
@@ -37,6 +38,7 @@ class App extends Component {
           <Route exact path='/' component={HomePage} />
           <Route exact path='/login' component={LoginPage} />
           <Route exact path='/friends' component={FriendsPage} />
+          <Route exact path='/watch' component={WatchPage} />
         </Switch>
       </div>
     );

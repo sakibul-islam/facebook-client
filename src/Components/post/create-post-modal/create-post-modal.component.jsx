@@ -7,7 +7,7 @@ import ProfilePic from "../../profile-pic/profile-pic.component";
 import { CrossIcon, EarthIcon } from "../../icons/icons";
 import Name from "../../name/name.component";
 
-const CreatePostModal = ({ userName, displayName, setModal }) => {
+const CreatePostModal = ({ userName, photoURL, displayName, setModal }) => {
 	const [caption, setCaption] = useState("");
   const [photo, setPhoto] = useState("");
 	const { posts, setPosts } = useContext(PostsContext);
@@ -78,14 +78,22 @@ const CreatePostModal = ({ userName, displayName, setModal }) => {
         "caption": ${JSON.stringify(caption)}
       }`,
 		};
-		setCaption("");
+		
 
 		requestToGraphQl(query).then((result) => {
 			const post = result.data.addPost;
       console.log(post)
 			setPosts([post, ...posts]);
+      setCaption("");
 			setModal(false);
-		});
+		}).catch(err => {
+      console.log(err)
+      setCaption("Opps, something went wrong...")
+      setTimeout(() => {
+        setCaption("");
+        setModal(false);
+      }, 1000)
+    })
 
 
     // const formData = new FormData();
@@ -118,7 +126,7 @@ const CreatePostModal = ({ userName, displayName, setModal }) => {
           </div>
           <div className="owner">
             <div className='left'>
-              <ProfilePic/>
+              <ProfilePic photoURL={photoURL}/>
               <div className='right'>
                 <Name displayName={displayName}/>
                 <div className='privacy'>
@@ -140,8 +148,8 @@ const CreatePostModal = ({ userName, displayName, setModal }) => {
 	);
 };
 
-const mapDispatchToProps = ({ user: { userName, displayName } }) => ({
-	userName, displayName
+const mapDispatchToProps = ({ user: { userName, displayName, photoURL } }) => ({
+	userName, displayName, photoURL
 });
 
 export default connect(mapDispatchToProps)(CreatePostModal);

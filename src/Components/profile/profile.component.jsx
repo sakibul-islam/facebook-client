@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import { requestToGraphQl } from '../../graphql/graphql';
 
 const Profile = ({userName}) =>  {
+  console.log(userName)
   const [profile, setProfile] = useState({});
   useEffect(() => {
     requestToGraphQl({
@@ -32,7 +33,7 @@ const Profile = ({userName}) =>  {
     }).catch(err => {
       setProfile(profiles[userName])
     })
-  }, [])
+  }, [userName])
   const { displayName, nickName, photoURL, photos, coverURL, bio, born, followedBy } = profile;
   const bornDate = new Date(Number(born)).toDateString();
   console.log(photos)

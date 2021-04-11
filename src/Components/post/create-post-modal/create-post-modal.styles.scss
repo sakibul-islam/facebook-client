@@ -1,3 +1,4 @@
+@import '../../../layout.scss';
 .post-modal-container {
 	margin-top: 50px;
 	position: fixed;
@@ -83,6 +84,30 @@
       resize: none;
       transition: transform 1s;
 		}
+		.media {
+      @include v-center();
+      justify-content: space-between;
+      padding-top: 10px;
+      
+      .hover-button {
+        flex: auto;
+        height: 40px;
+        @include v-center();
+
+        .icon {
+          margin-right: 5px;
+        }
+
+        .btn-name {
+          @media screen and (max-width: 700px) {
+            display: none;
+          }
+        }
+				input {
+					display: none;
+				}
+      }
+    }
     .post-btn:disabled {
       background-color: #E4E6EB;
     }

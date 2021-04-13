@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import "./create-post-modal.styles.scss";
 // import { requestToGraphQl } from "../../../graphql/graphql";
 // import PostsContext from "../../../contexts/posts.context";
@@ -149,14 +149,17 @@ const CreatePostModal = ({ userName, photoURL, displayName, setModal }) => {
 						placeholder="What's on your mind?"
 					/>
           {
-            photo? <img src={URL.createObjectURL(photo)} height='50'/> : ''
+            photo && photo.type.match("image") ? <img src={URL.createObjectURL(photo)} height='50' alt=''/> : null
           }
+					{
+						photo && photo.type.match("video") ? <video src={URL.createObjectURL(photo)} height='50'></video> : null
+					}
 					<div className="media">
-						<label for="" className="hover-button">
+						<label htmlFor="" className="hover-button">
 							<LiveVideoIcon className="icon" />
 							<span className="btn-name">Live Video</span>
 						</label>
-						<label for="photo" className="hover-button">
+						<label htmlFor="photo" className="hover-button">
 							<PhotoVideoIcon className="icon" />
 							<span className="btn-name">Photo/Video</span>
 							<input
@@ -166,7 +169,7 @@ const CreatePostModal = ({ userName, photoURL, displayName, setModal }) => {
 								onChange={handleChange}
 							/>
 						</label>
-						<label for="" className="hover-button">
+						<label htmlFor="" className="hover-button">
 							<FeelingActivityIcon className="icon" />
 							<span className="btn-name">Feeling/Activity</span>
 						</label>

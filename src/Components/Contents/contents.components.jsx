@@ -24,6 +24,7 @@ const Contents = ({ gun }) => {
           body {
             caption
             photoURL
+            videoURL
           }
           time
           reactions {

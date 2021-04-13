@@ -1,17 +1,63 @@
-const WatchPage = () => (
-	<div className="friends-page">
-		<iframe
-      style={{width: "100%"}}
-      className="video"
-			width="100%"
-			height="498"
-			src="https://www.youtube.com/embed/QLgDg-JRrOc"
-			title="YouTube video player"
-			frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-			allowfullscreen
-		></iframe>
+import { useEffect, useState } from "react";
+import ShowPost from "../../Components/post/show-post/show-post.component";
+import { requestToGraphQl } from "../../graphql/graphql";
+
+const WatchPage = () => {
+	const [videos, setVideos] = useState([]);
+
+	useEffect(() => {
+		requestToGraphQl({
+      query: `{
+        videos {
+          id
+          user {
+            userName
+            displayName
+            photoURL
+          }
+          body {
+            caption
+            photoURL
+            videoURL
+          }
+          time
+          reactions {
+            like
+            haha
+            wow
+            love
+            sad
+            care
+            angry
+          }
+          comments {
+            id
+            user {
+              displayName
+              photoURL
+              userName
+            }
+            body
+          }
+        }
+      }`,
+    })
+			.then((result) => {
+        // console.log(result.data.videos);
+        setVideos(result.data.videos)
+      });
+	}, []);
+
+	return (
+	<div className="watch-page">
+
+		<div className='videos' style={{maxWidth: '600px', margin: 'auto'}}>
+			{
+				videos.map(video => <ShowPost key={video.id} post={video}/>)
+			}
+		</div>
+
 	</div>
-);
+)};
 
 export default WatchPage;

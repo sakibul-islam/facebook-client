@@ -169,7 +169,9 @@ class ShowPost extends Component {
 					</div>
 					{caption ? <div className="caption">{caption}</div> : null}
 					{body.photoURL ? <img src={body.photoURL} alt="" /> : null}
-					{totalReact || comments || shares ? (
+					{body.videoURL ? <video src={body.videoURL} controls></video> : null}
+
+					{totalReact || comments.length || shares ? (
 						<div className="quantities">
 							<div className="left">
 								{totalReact > 0 ? (

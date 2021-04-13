@@ -15,7 +15,7 @@ const CreatePostPreview = ({setModal}) => {
             What's on your mind?
           </HoverButton>
         </div>
-        <div className='media'>
+        <div className='media' onClick={() => setModal(true)}>
           <HoverButton>
             <LiveVideoIcon className='icon'/>
             <span className='btn-name'>Live Video</span>

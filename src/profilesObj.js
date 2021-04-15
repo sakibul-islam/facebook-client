@@ -82,6 +82,15 @@ const profiles = {
     photos: [],
     bio: '',
     born: ''
+  },
+  mehedi: {
+    displayName: 'Mehedi Hasan',
+    userName: 'mehedi',
+    nickName: 'Visitor',
+    photoURL: 'http://localhost:3001/public\\uploads\\1618374411301.jpg',
+    photos: [],
+    bio: '',
+    born: ''
   }
 }
 

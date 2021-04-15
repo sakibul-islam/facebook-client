@@ -24,6 +24,7 @@ const Profile = ({userName}) =>  {
         photoURL
         photos
         userName
+        followers
         nickName
         bio
         born
@@ -34,7 +35,7 @@ const Profile = ({userName}) =>  {
       setProfile(profiles[userName])
     })
   }, [userName])
-  const { displayName, nickName, photoURL, photos, coverURL, bio, born, followedBy } = profile;
+  const { displayName, nickName, photoURL, photos, coverURL, bio, born, followers } = profile;
   const bornDate = new Date(Number(born)).toDateString();
   console.log(photos)
   return (
@@ -87,13 +88,13 @@ const Profile = ({userName}) =>  {
             ) : null
           }
           {
-            followedBy ? (
+            followers ? (
               <div className='section followed-by'>
             <span className='icon'>
               <img src={followIcon} alt='' />
             </span>
             <span> Followed by </span>
-            <span className='link'>{followedBy}</span>
+            <span className='link'>{followers}</span>
           </div>
             ) : null
           }

@@ -24,6 +24,7 @@
 
 		.search {
 			position: relative;
+			margin-right: 10px;
 			@include v-center();
 
 			.icon {
@@ -68,6 +69,13 @@
 			.tooltip {
 				top: 130%;
 			}
+			@media screen and (max-width: 700px) {
+				width: auto;
+				
+				.bottom-border {
+					display: none;
+				}
+			}
 		}
 		.hover-button.active {
 			.icon {
@@ -78,11 +86,13 @@
 				position: absolute;
 				bottom: 0;
 				border-bottom: 3px solid #1877f2;
+
+				
 			}
 		}
 
 		@media screen and (max-width: 700px) {
-			display: none;
+			// display: none;
 			// display: flex;
 			// margin: 0;
 			// position: fixed;
@@ -96,6 +106,9 @@
 			// 	display: block;
 			// 	width: 100%;
 			// }
+		}
+		@media screen and (max-width: 1100px) {
+			margin-left: 20px;
 		}
 	}
 
@@ -163,5 +176,8 @@
 
 	@media screen and (max-width: 700px) {
 		justify-content: space-between;
+		.left, .right {
+			width: auto;
+		}
 	}
 }

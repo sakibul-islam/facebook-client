@@ -6,6 +6,19 @@ html {
 }
 .App {
   text-align: center;
+
+  .left-nav.fixed {
+    position: fixed;
+    top: 56px;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 100;
+
+    .content {
+      width: 100%;
+    }
+  }
 }
 * {
   box-sizing: border-box;

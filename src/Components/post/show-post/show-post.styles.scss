@@ -19,18 +19,21 @@
       margin: 10px;
       .left {
         display: flex;
+        align-items: center;
   
         .details {
           @include flex-column();
           align-items: flex-start;
           margin-left: 10px;
-  
+          
           .names {
             font-weight: bold;
             color: rgb(65, 65, 65);
+            font-size: 16px;
           }
           .time {
             color: rgb(150, 150, 150);
+            font-size: 14px;
           }
         }
         

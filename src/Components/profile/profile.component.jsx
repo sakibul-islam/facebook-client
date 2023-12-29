@@ -5,16 +5,16 @@
 import profiles from '../../profilesObj';
 
 import './profile.styles.scss';
-import homeIcon from './home.png'
+import homeIcon from './home.png';
 import followIcon from './follow.png';
 import studyIcon from './study.png';
 
 import { connect } from "react-redux";
 import { useEffect, useState } from 'react';
 import { requestToGraphQl } from '../../graphql/graphql';
+import { formatDate } from '../../modules/time';
 
-const Profile = ({userName}) =>  {
-  console.log(userName)
+const Profile = ({ userName }) => {
   const [profile, setProfile] = useState({});
   useEffect(() => {
     requestToGraphQl({
@@ -30,23 +30,22 @@ const Profile = ({userName}) =>  {
         born
       }}`
     }).then(result => {
-      setProfile(result.data.user)
+      setProfile(result.data.user);
     }).catch(err => {
-      setProfile(profiles[userName])
-    })
-  }, [userName])
+      setProfile(profiles[userName]);
+    });
+  }, [userName]);
+
   const { displayName, nickName, photoURL, photos, coverURL, bio, born, followers } = profile;
-  const bornDate = new Date(Number(born)).toDateString();
-  console.log(photos)
   return (
     <div className='profile-page'>
       <div className='profile-header'>
         <div className='header-pic'>
-          <div className='cover-pic' 
-            style={{backgroundImage: `url(${coverURL || 'https://coverfiles.alphacoders.com/128/128297.jpg'})`}}
+          <div className='cover-pic'
+            style={{ backgroundImage: `url(${coverURL || 'https://coverfiles.alphacoders.com/128/128297.jpg'})` }}
           >
           </div>
-          <div className='profile-pic' style={{backgroundImage: `url(${photoURL})`}}>
+          <div className='profile-pic' style={{ backgroundImage: `url(${photoURL})` }}>
           </div>
         </div>
         <div className='name-bio'>
@@ -83,35 +82,35 @@ const Profile = ({userName}) =>  {
                   <img src={homeIcon} alt='' />
                 </span>
                 <span>Born</span>
-                <span className='link'>{bornDate}</span>
+                <span className='link'>{born ? formatDate(new Date(born)) : ""}</span>
               </div>
             ) : null
           }
           {
             followers ? (
               <div className='section followed-by'>
-            <span className='icon'>
-              <img src={followIcon} alt='' />
-            </span>
-            <span> Followed by </span>
-            <span className='link'>{followers}</span>
-          </div>
+                <span className='icon'>
+                  <img src={followIcon} alt='' />
+                </span>
+                <span> Followed by </span>
+                <span className='link'>{followers}</span>
+              </div>
             ) : null
           }
         </div>
-        
+
         {
-          photos ? ( 
+          photos ? (
             photos.length ? (
               <div className='photos'>
                 {
-                  photos.map((photoUrl, index) => <div key={index} className='photo' style={{backgroundImage: `url(${photoUrl})`}}></div>)
+                  photos.map((photoUrl, index) => <div key={index} className='photo' style={{ backgroundImage: `url(${photoUrl})` }}></div>)
                 }
               </div>
-            ) : null 
+            ) : null
           ) : null
         }
-        
+
         {/* <div className='right-side'>
           <CreatePostPreview/>
           {
@@ -122,12 +121,12 @@ const Profile = ({userName}) =>  {
         </div> */}
       </div>
     </div>
-  )
-}
+  );
+};
 
-const mapStateToProps = ({user}, {match: {params: {userName}}}) => ({
+const mapStateToProps = ({ user }, { match: { params: { userName } } }) => ({
   userName
-})
+});
 
 
 export default connect(mapStateToProps)(Profile);

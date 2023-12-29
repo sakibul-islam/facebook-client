@@ -17,7 +17,7 @@ const DropdownNotification = () => (
         <div className='notification'>
           <div className='body'>
             <span className='link'>Your Crush</span>
-            visited you profile 3 times today
+            visited your profile 3 times today
           </div>
           <span className='time'>2 hours ago</span>
         </div>
@@ -27,7 +27,7 @@ const DropdownNotification = () => (
         <div className='notification'>
           <div className='body'>
             <span className='link'>Your Ex</span>
-            reading your old message
+            reading your old messages
           </div>
           <span className='time'>3 hours ago</span>
         </div>
@@ -37,7 +37,7 @@ const DropdownNotification = () => (
         <div className='notification'>
           <div className='body'>
             <span className='link'>Someone</span> and <span className='link'>7 others</span>
-            viewed you post but didn't react
+            viewed your post but didn't react
           </div>
           <span className='time'>5 hours ago</span>
         </div>

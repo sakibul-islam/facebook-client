@@ -15,6 +15,7 @@ import { gunTrigger, gunTriggeredDone } from "../../../redux/gun/gun.actions";
 import ReactionBox from "../../reaction-box/reaction-box";
 import SortedReactions from "../../reaction-box/sorted-reactions";
 import ReactionWithName from "../../reaction-box/reaction-with-name";
+import { formatDate } from "../../../modules/time";
 
 class ShowPost extends Component {
 	state = {
@@ -143,7 +144,7 @@ class ShowPost extends Component {
 		const { post, gun } = this.props;
 		const { displayName, userName } = post.user;
 		const { body, comments, shares, time } = post;
-		const ParsedTime = new Date(Number(time)).toLocaleDateString();
+		const ParsedTime = formatDate(new Date(time));
 		const { caption } = body;
 		const reactBtnClasses = `hover-button ${gun.gunMode ? "gun-mode" : ""} ${
 			this.state.gunAnimation

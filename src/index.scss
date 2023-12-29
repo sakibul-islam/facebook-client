@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  //It's blocking mouse events. I don't where does it come from.
+  iframe {
+    display: none;
+  }
 }
 
 code {

@@ -1,7 +1,7 @@
 import ProfilePic from '../profile-pic/profile-pic.component';
 import './dropdown-notification.styles.scss';
 import { ThreeDotsIcon } from '../icons/icons';
-import {sakib} from '../../profilesObj';
+import profiles from '../../profilesObj';
 
 const DropdownNotification = () => (
   <div className='dropdown-notification'>
@@ -43,7 +43,7 @@ const DropdownNotification = () => (
         </div>
       </div>
       <div className='notification-container'>
-        <ProfilePic photoURL={sakib.photoURL}/>
+        <ProfilePic photoURL={profiles.sakib.photoURL}/>
         <div className='notification'>
           <div className='body'>
             <span className='link'>Sakibul Islam</span>

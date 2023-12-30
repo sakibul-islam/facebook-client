@@ -36,7 +36,7 @@ const Profile = ({ userName }) => {
     });
   }, [userName]);
 
-  const { displayName, nickName, photoURL, photos, coverURL, bio, born, followers } = profile;
+  const { displayName, nickName, photoURL, photos, coverURL, bio, birthday, followers, studiesAt } = profile;
   return (
     <div className='profile-page'>
       <div className='profile-header'>
@@ -61,13 +61,15 @@ const Profile = ({ userName }) => {
       <div className='main'>
         <div className='intro'>
           <div className='heading'>Intro</div>
-          <div className='section studies-at'>
-            <span className='icon'>
-              <img src={studyIcon} alt='' />
-            </span>
-            <span> Studies at </span>
-            <span className='link'>School</span>
-          </div>
+          {studiesAt ? (
+            <div className='section studies-at'>
+              <span className='icon'>
+                <img src={studyIcon} alt='' />
+              </span>
+              <span> Studies at </span>
+              <span className='link'>{studiesAt}</span>
+            </div>
+          ) : null}
           <div className='section lives-in'>
             <span className='icon'>
               <img src={homeIcon} alt='' />
@@ -76,13 +78,13 @@ const Profile = ({ userName }) => {
             <span className='link'>Earth</span>
           </div>
           {
-            born ? (
-              <div className='section born'>
+            birthday ? (
+              <div className='section birthday'>
                 <span className='icon'>
                   <img src={homeIcon} alt='' />
                 </span>
-                <span>Born</span>
-                <span className='link'>{born ? formatDate(new Date(born)) : ""}</span>
+                <span>Date of birthday</span>
+                <span className='link'>{birthday ? formatDate(new Date(birthday)) : ""}</span>
               </div>
             ) : null
           }

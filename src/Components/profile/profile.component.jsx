@@ -1,7 +1,7 @@
 // import Card from '../../Components/Card/card.component';
 // import CreatePostPreview from '../../Components/post/create-post-preview/create-post-preview.component';
-// import ShowPost from '../../Components/post/show-post/show-post.component';
-// import posts from '../../posts';
+import ShowPost from '../../Components/post/show-post/show-post.component';
+import posts from '../../posts';
 import profiles from '../../profilesObj';
 
 import './profile.styles.scss';
@@ -59,68 +59,78 @@ const Profile = ({ userName }) => {
         </div>
       </div>
       <div className='main'>
-        <div className='intro'>
-          <div className='heading'>Intro</div>
-          {studiesAt ? (
-            <div className='section studies-at'>
+        <div className="left-side">
+          <div className='intro'>
+            <div className='heading'>Intro</div>
+            {studiesAt ? (
+              <div className='section studies-at'>
+                <span className='icon'>
+                  <img src={studyIcon} alt='' />
+                </span>
+                <span className='text'>
+                  <span> Studies at </span>
+                  <span className='link'> {studiesAt}</span>
+                </span>
+              </div>
+            ) : null}
+            <div className='section lives-in'>
               <span className='icon'>
-                <img src={studyIcon} alt='' />
+                <img src={homeIcon} alt='' />
               </span>
-              <span> Studies at </span>
-              <span className='link'>{studiesAt}</span>
+              <span className='text'>
+                <span> Lives in </span>
+                <span className='link'> Earth</span>
+              </span>
             </div>
-          ) : null}
-          <div className='section lives-in'>
-            <span className='icon'>
-              <img src={homeIcon} alt='' />
-            </span>
-            <span> Lives in </span>
-            <span className='link'>Earth</span>
+            {
+              birthday ? (
+                <div className='section birthday'>
+                  <span className='icon'>
+                    <img src={homeIcon} alt='' />
+                  </span>
+                  <span className='text'>
+                    <span>Date of birthday</span>
+                    <span className='link'> {birthday ? formatDate(new Date(birthday)) : ""}</span>
+                  </span>
+                </div>
+              ) : null
+            }
+            {
+              followers ? (
+                <div className='section followed-by'>
+                  <span className='icon'>
+                    <img src={followIcon} alt='' />
+                  </span>
+                  <span> Followed by </span>
+                  <span className='link'>{followers}</span>
+                </div>
+              ) : null
+            }
           </div>
+
           {
-            birthday ? (
-              <div className='section birthday'>
-                <span className='icon'>
-                  <img src={homeIcon} alt='' />
-                </span>
-                <span>Date of birthday</span>
-                <span className='link'>{birthday ? formatDate(new Date(birthday)) : ""}</span>
-              </div>
-            ) : null
-          }
-          {
-            followers ? (
-              <div className='section followed-by'>
-                <span className='icon'>
-                  <img src={followIcon} alt='' />
-                </span>
-                <span> Followed by </span>
-                <span className='link'>{followers}</span>
-              </div>
+            photos ? (
+              photos.length ? (
+                <div className='photos'>
+                  {
+                    photos.map((photoUrl, index) => <div key={index} className='photo' style={{ backgroundImage: `url(${photoUrl})` }}></div>)
+                  }
+                </div>
+              ) : null
             ) : null
           }
         </div>
 
-        {
-          photos ? (
-            photos.length ? (
-              <div className='photos'>
-                {
-                  photos.map((photoUrl, index) => <div key={index} className='photo' style={{ backgroundImage: `url(${photoUrl})` }}></div>)
-                }
-              </div>
-            ) : null
-          ) : null
-        }
-
-        {/* <div className='right-side'>
-          <CreatePostPreview/>
-          {
-            posts.map(post => (
-              <ShowPost post={post} key={post.id} />
-            ))
-          }
-        </div> */}
+        <div className="right-side">
+          <section className="posts-section">
+            {/* <h2>Posts</h2> */}
+            <div className="posts">
+              {posts.filter(post => post.user.userName === userName).map(post => (
+                <ShowPost post={post} />
+              ))}
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );

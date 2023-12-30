@@ -50,6 +50,7 @@ const profiles = {
     userName: 'ron',
     nickName: 'Ron',
     photoURL: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Ron_Weasley_poster.jpg/220px-Ron_Weasley_poster.jpg',
+    coverURL: 'https://evywrites.files.wordpress.com/2015/10/harry-potter-philosopgers-stone-1.jpg',
     photos: [],
     bio: 'Gryffindor Quidditch Keeper, prefect, and co-founder of Dumbledore\'s Army',
     studiesAt: Hogwarts,

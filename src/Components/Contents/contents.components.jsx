@@ -11,50 +11,6 @@ import PostsContext from '../../contexts/posts.context';
 const Contents = ({ gun }) => {
   const [posts, setPosts] = useState(postArr);
 
-  useEffect(() => {
-    // requestToGraphQl({
-    //   query: `{
-    //     posts {
-    //       id
-    //       user {
-    //         userName
-    //         displayName
-    //         photoURL
-    //       }
-    //       body {
-    //         caption
-    //         photoURL
-    //         videoURL
-    //       }
-    //       time
-    //       reactions {
-    //         like
-    //         haha
-    //         wow
-    //         love
-    //         sad
-    //         care
-    //         angry
-    //       }
-    //       comments {
-    //         id
-    //         user {
-    //           displayName
-    //           photoURL
-    //           userName
-    //         }
-    //         body
-    //       }
-    //     }
-    //   }`,
-    // })
-    // 	.then((result) => {
-    //     console.log(result.data.posts);
-    //     setPosts(result.data.posts)
-    //   });
-  }, []);
-
-
   return (
     <div className="contents">
       <PostsContext.Provider value={{ posts, setPosts }}>
